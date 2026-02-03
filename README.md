@@ -1,4 +1,4 @@
-# BirthDay App
+# Moments
 
 [![Laravel Version](https://img.shields.io/badge/Laravel-12.x-red.svg)](https://laravel.com)
 [![PHP Version](https://img.shields.io/badge/PHP-8.2%2B-blue.svg)](https://php.net)
@@ -8,7 +8,7 @@ A professional multi-tenant Laravel PWA application featuring a Stranger Things-
 
 ## 🌟 Project Overview
 
-**BirthDay App** is designed to be a personal digital scrapbook. It combines a visually stunning landing page with a powerful backend for managing "Moments"—memories consisting of titles, descriptions, dates, and locations. Built with a mobile-first philosophy, the application is fully Progressive Web App (PWA) compliant, allowing users to install it on their devices for an app-like experience.
+**Moments** is designed to be a personal digital scrapbook. It combines a visually stunning landing page with a powerful backend for managing "Moments"—memories consisting of titles, descriptions, dates, and locations. Built with a mobile-first philosophy, the application is fully Progressive Web App (PWA) compliant, allowing users to install it on their devices for an app-like experience.
 
 ### Key Architectural Highlight: Multi-Tenancy
 The application supports **Multi-Tenancy** using a single shared database architecture. This allows multiple independent organizations or individuals to use the same platform with complete data isolation, served via dedicated subdomains or custom domains.

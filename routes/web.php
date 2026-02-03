@@ -54,8 +54,8 @@ Route::middleware(['superadmin.auth'])->prefix('superadmin')->name('superadmin.'
 // PWA Manifest
 Route::get('/manifest.json', function () {
     return response()->json([
-        'name' => 'BirthDay App',
-        'short_name' => 'BirthDay',
+        'name' => 'Moments',
+        'short_name' => 'Moments',
         'description' => 'Countdown and Moments Tracker',
         'start_url' => '/',
         'display' => 'standalone',

@@ -4,13 +4,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>@yield('title', 'BirthDay App')</title>
+    <title>@yield('title', 'Moments')</title>
     
-    <!-- PWA Meta Tags -->
+    <!-- PWA Support -->
     <meta name="theme-color" content="#ea2a33">
+    <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="BirthDay">
+    <meta name="apple-mobile-web-app-title" content="Moments">
     <link rel="manifest" href="/manifest.json">
     <link rel="apple-touch-icon" href="/icons/icon-192x192.png">
     
@@ -80,7 +81,7 @@
                 <span class="material-symbols-outlined text-primary text-2xl">download</span>
             </div>
             <div class="flex-1 min-w-0">
-                <h3 class="font-bold text-gray-900 dark:text-white text-sm">Install BirthDay App</h3>
+                <h3 class="font-bold text-gray-900 dark:text-white text-sm">Install Moments App</h3>
                 <p class="text-xs text-gray-500 dark:text-gray-400 mt-1">Add to your home screen for quick access and offline support.</p>
             </div>
             <button onclick="dismissInstallPrompt()" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200">

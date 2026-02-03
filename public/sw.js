@@ -1,4 +1,4 @@
-const CACHE_NAME = 'birthday-app-v3';
+const CACHE_NAME = 'moments-app-v1';
 const STATIC_ASSETS = [
     '/',
     '/login',
@@ -144,7 +144,7 @@ self.addEventListener('push', (event) => {
     };
 
     event.waitUntil(
-        self.registration.showNotification('BirthDay App', options)
+        self.registration.showNotification('Moments', options)
     );
 });
 
