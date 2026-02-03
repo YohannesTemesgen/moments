@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Genna Countdown – ገና ቆጠራ</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Ethiopic:wght@400;700;900&amp;family=Work+Sans:wght@300;400;600;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#D92323", // Deep Red from flag
+                        "eth-green": "#009A44", // Green from flag
+                        "eth-yellow": "#FFD700", // Yellow from flag
+                        "background-light": "#F9F5EB", // Light Parchment
+                        "background-dark": "#1E1810", // Dark Coffee
+                        "accent-brown": "#8B4513", // Earthy brown
+                        "accent-gold": "#DAA520", // Metallic gold
+                        "paper": "#FFFDF5", 
+                    },
+                    fontFamily: {
+                        "display": ["Work Sans", "sans-serif"],
+                        "ethiopic": ["Noto Serif Ethiopic", "serif"],
+                    },
+                    backgroundImage: {
+                        'tibeb-pattern': "repeating-linear-gradient(90deg, #009A44 0px, #009A44 10px, #FFD700 10px, #FFD700 20px, #D92323 20px, #D92323 30px)",
+                        'mesob-texture': "radial-gradient(circle at center, transparent 0%, transparent 95%, rgba(139, 69, 19, 0.05) 100%), linear-gradient(45deg, rgba(139, 69, 19, 0.02) 25%, transparent 25%, transparent 75%, rgba(139, 69, 19, 0.02) 75%, rgba(139, 69, 19, 0.02))",
+                    },
+                    boxShadow: {
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03)',
+                        'glow': '0 0 15px rgba(255, 215, 0, 0.3)',
+                    }
+                },
+            },
+        }
+    </script>
+<style>::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #F9F5EB; }
+        ::-webkit-scrollbar-thumb { background: #8B4513; border-radius: 3px; }
+        .glass-panel {
+            background: rgba(255, 253, 245, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(139, 69, 19, 0.1);
+        }
+        @keyframes flicker {
+            0%, 100% { opacity: 1; transform: scale(1); filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.6)); }
+            50% { opacity: 0.8; transform: scale(0.98); filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.8)); }
+        }
+        .candle-flame {
+            animation: flicker 2s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark text-[#3E2723] dark:text-[#F9F5EB] overflow-x-hidden font-display transition-colors duration-300">
+<div class="h-3 w-full bg-tibeb-pattern shadow-md z-50"></div>
+<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+<div class="absolute inset-0 bg-mesob-texture opacity-60 z-0 bg-[length:40px_40px]"></div>
+<div class="absolute bottom-0 left-0 w-full h-[65vh] bg-contain bg-bottom bg-no-repeat opacity-25 dark:opacity-15 mix-blend-multiply dark:mix-blend-overlay z-10" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAWL8c2kqep_IYEOmm6MzLlFNuIIzfuv5W4ajKELYvCWcRRc7Pvm8FJcPNK-zkDoA0Ah9zrLtnhCjS9FNjaFT0Ia_dJrIMe4d4gFxnNJGrq1-5p20caLasI1XWTyU4_t2uDQIUbts8NjhvWehKl-aAXwXLnJUkcUpSIXiH-q3Q16CikJTJf0ikODpVPRwA0XWO9gK-jaRCuYKnvOB618MBpDyNw6DvaU0T8S1JmXooN9uoHJO75pukuDH4lV0UzjB9G2V0wU8xtXog');">
+</div>
+<div class="absolute inset-0 bg-gradient-to-t from-background-light via-transparent to-background-light/50 dark:from-background-dark dark:via-transparent dark:to-background-dark/50 z-20"></div>
+</div>
+<div class="relative z-30 flex flex-col min-h-screen">
+<header class="flex items-center justify-between px-6 py-6 md:px-12 lg:px-24">
+<div class="flex items-center gap-4">
+<div class="p-2 rounded-full border border-accent-brown/20 bg-white/40 backdrop-blur-sm shadow-sm">
+<span class="material-symbols-outlined text-accent-brown text-2xl">church</span>
+</div>
+<div>
+<h1 class="text-xl font-bold text-primary font-ethiopic leading-none">Genna</h1>
+<p class="text-[10px] uppercase tracking-[0.2em] text-accent-brown font-semibold opacity-80 mt-1">Ethiopian Christmas</p>
+</div>
+</div>
+<button class="flex items-center gap-2 px-4 py-2 rounded-full bg-white/60 dark:bg-black/30 border border-eth-yellow/30 hover:border-eth-yellow hover:bg-white dark:hover:bg-black/50 transition-all group shadow-sm cursor-pointer">
+<span class="material-symbols-outlined text-lg text-accent-brown dark:text-eth-yellow group-hover:scale-110 transition-transform">music_note</span>
+<span class="text-xs font-bold uppercase tracking-wide hidden sm:inline-block">Mezmur</span>
+</button>
+</header>
+<main class="flex-grow flex flex-col justify-center items-center px-4 py-8 relative">
+<div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[180px] text-accent-brown opacity-[0.04] pointer-events-none select-none font-ethiopic">
+                ፨
+            </div>
+<div class="w-full max-w-5xl mx-auto flex flex-col items-center gap-10">
+<div class="text-center space-y-3">
+<div class="inline-flex items-center justify-center gap-3 mb-2 text-accent-brown/80">
+<span class="text-xl font-ethiopic">✥</span>
+<span class="text-xs uppercase tracking-widest font-semibold">Jan 7th</span>
+<span class="text-xl font-ethiopic">✥</span>
+</div>
+<h2 class="text-4xl md:text-7xl font-black text-[#3E2723] dark:text-[#EFEBE0] font-ethiopic tracking-tight drop-shadow-sm leading-tight">
+                        Genna Countdown
+                    </h2>
+<h3 class="text-3xl md:text-5xl font-normal text-primary font-ethiopic mt-2">
+                        ገና ቆጠራ
+                    </h3>
+</div>
+<div class="w-full grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 max-w-4xl mt-4">
+<div class="glass-panel relative overflow-hidden rounded-2xl p-6 flex flex-col items-center justify-center shadow-card hover:-translate-y-1 transition-transform duration-300 group">
+<div class="absolute top-0 w-full h-1.5 bg-eth-green"></div>
+<span class="text-6xl md:text-7xl font-black text-eth-green font-ethiopic tracking-tighter">12</span>
+<span class="text-xs font-bold uppercase tracking-[0.2em] text-gray-500 mt-2">Days</span>
+<span class="text-sm font-ethiopic text-gray-400">ቀናት</span>
+</div>
+<div class="glass-panel relative overflow-hidden rounded-2xl p-6 flex flex-col items-center justify-center shadow-card hover:-translate-y-1 transition-transform duration-300 group">
+<div class="absolute top-0 w-full h-1.5 bg-eth-yellow"></div>
+<span class="text-6xl md:text-7xl font-black text-eth-yellow font-ethiopic tracking-tighter">04</span>
+<span class="text-xs font-bold uppercase tracking-[0.2em] text-gray-500 mt-2">Hours</span>
+<span class="text-sm font-ethiopic text-gray-400">ሰዓታት</span>
+</div>
+<div class="glass-panel relative overflow-hidden rounded-2xl p-6 flex flex-col items-center justify-center shadow-card hover:-translate-y-1 transition-transform duration-300 group">
+<div class="absolute top-0 w-full h-1.5 bg-primary"></div>
+<span class="text-6xl md:text-7xl font-black text-primary font-ethiopic tracking-tighter">32</span>
+<span class="text-xs font-bold uppercase tracking-[0.2em] text-gray-500 mt-2">Minutes</span>
+<span class="text-sm font-ethiopic text-gray-400">ደቂቃዎች</span>
+</div>
+<div class="glass-panel relative overflow-hidden rounded-2xl p-6 flex flex-col items-center justify-center shadow-card bg-white dark:bg-neutral-800 border-accent-brown/20 ring-1 ring-accent-brown/5">
+<div class="absolute top-0 w-full h-1.5 bg-accent-brown"></div>
+<div class="absolute -top-6 right-1/2 translate-x-1/2 w-12 h-12 bg-eth-yellow/10 rounded-full blur-xl candle-flame pointer-events-none"></div>
+<span class="text-6xl md:text-7xl font-black text-accent-brown dark:text-eth-yellow font-ethiopic tracking-tighter relative z-10">15</span>
+<span class="text-xs font-bold uppercase tracking-[0.2em] text-gray-500 mt-2">Seconds</span>
+<span class="text-sm font-ethiopic text-gray-400">ሰከንዶች</span>
+</div>
+</div>
+<div class="text-center mt-8 md:mt-12">
+<div class="inline-flex flex-col items-center p-6 rounded-3xl border border-white/40 bg-white/30 backdrop-blur-md shadow-sm max-w-lg mx-auto">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-eth-yellow text-2xl" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="text-2xl md:text-3xl font-ethiopic text-primary font-bold mb-2">Melkam Genna! መልካም ገና</p>
+<p class="text-sm text-[#3E2723]/70 dark:text-[#EFEBE0]/70 font-display italic max-w-xs leading-relaxed">
+                            "May the light of His birth shine upon your home and fill your heart with peace."
+                        </p>
+</div>
+</div>
+<div class="flex gap-6 mt-2 pb-6">
+<button class="text-accent-brown/60 hover:text-primary transition-colors hover:scale-110 transform duration-200">
+<span class="material-symbols-outlined text-2xl">share</span>
+</button>
+<button class="text-accent-brown/60 hover:text-primary transition-colors hover:scale-110 transform duration-200">
+<span class="material-symbols-outlined text-2xl">favorite</span>
+</button>
+<button class="text-accent-brown/60 hover:text-primary transition-colors hover:scale-110 transform duration-200">
+<span class="material-symbols-outlined text-2xl">info</span>
+</button>
+</div>
+</div>
+</main>
+<footer class="w-full py-4 text-center relative z-20 bg-white/20 backdrop-blur-sm border-t border-accent-brown/5">
+<div class="flex justify-center gap-2 mb-2 opacity-70">
+<div class="w-1.5 h-1.5 rounded-full bg-eth-green"></div>
+<div class="w-1.5 h-1.5 rounded-full bg-eth-yellow"></div>
+<div class="w-1.5 h-1.5 rounded-full bg-primary"></div>
+</div>
+<p class="text-[10px] uppercase tracking-wider text-accent-brown/60 font-semibold">
+                © 2024 Genna Countdown. Celebrating Heritage.
+            </p>
+</footer>
+<div class="h-3 w-full bg-tibeb-pattern shadow-inner z-50"></div>
+</div>
+
+</body></html>

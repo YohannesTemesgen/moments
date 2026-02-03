@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Add New Moment</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#197fe6",
+              "background-light": "#f6f7f8",
+              "background-dark": "#111921",
+              "surface-dark": "#1c2126",
+              "surface-dark-highlight": "#2a323b",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+</style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white overflow-hidden h-screen w-full flex flex-col relative">
+<header class="absolute top-0 left-0 right-0 z-30 pt-safe transition-colors duration-300 pointer-events-none">
+<div class="bg-white/90 dark:bg-surface-dark/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 pb-3 pt-3 px-4 flex items-center justify-between pointer-events-auto shadow-sm">
+<button class="text-base font-medium text-slate-500 dark:text-slate-400 hover:text-slate-800 dark:hover:text-white px-2 py-1 -ml-2">
+            Cancel
+        </button>
+<h1 class="text-base font-bold tracking-tight text-slate-900 dark:text-white">Add New Moment</h1>
+<button class="text-base font-semibold text-primary hover:text-blue-600 px-2 py-1 -mr-2">
+            Save
+        </button>
+</div>
+</header>
+<main class="flex-1 w-full h-full overflow-y-auto pt-[88px] pb-24 bg-slate-50 dark:bg-black no-scrollbar">
+<div class="max-w-md mx-auto px-4 space-y-6">
+<div class="relative w-full aspect-[4/3] rounded-2xl overflow-hidden shadow-sm bg-slate-200 dark:bg-surface-dark group cursor-pointer border border-slate-200 dark:border-slate-800">
+<div class="w-full h-full bg-cover bg-center transition-transform duration-500 group-hover:scale-105" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCOBccA_3iPse_6p-VSLZbRMCieGpgELc7mICLel9VHA9zK6WdVacyXrcBNpd_bujEDbpUnrJNnPA4isS-t_qDB5EuE_AA09m7H57glUqxfR3_lASkOD4W0ZBaG0ynFnqJdsixRDU_f6pJbBPwoHPZsSQLEMP83UpLkcQgLGBLCCnN_LsfDh0OY5AgJDBr3fKN36SZjfA94Prf6P2Rl1SUI7d2JR2d4EQf49jJW_c8YVjkALZMpJ4V-1p6TU6xLOc38oS5d20AJHL2-");'></div>
+<div class="absolute inset-0 bg-black/20 group-hover:bg-black/30 transition-colors flex items-center justify-center">
+<div class="bg-white/20 backdrop-blur-md border border-white/30 rounded-full p-3 text-white">
+<span class="material-symbols-outlined text-2xl">edit</span>
+</div>
+</div>
+<div class="absolute bottom-3 right-3 bg-black/60 backdrop-blur px-2 py-1 rounded-md text-xs font-medium text-white flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">photo_camera</span>
+<span>3 Photos</span>
+</div>
+</div>
+<div class="space-y-5">
+<div class="space-y-1.5">
+<label class="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider ml-1">Moment Title</label>
+<input class="w-full bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm font-medium text-slate-900 dark:text-white placeholder:text-slate-400 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all shadow-sm" type="text" value="Foundation Pouring Phase 1"/>
+</div>
+<div class="space-y-1.5">
+<label class="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider ml-1">Location</label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-slate-400 group-focus-within:text-primary transition-colors">location_on</span>
+</div>
+<input class="w-full bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-800 rounded-xl pl-10 pr-12 py-3 text-sm font-medium text-slate-900 dark:text-white placeholder:text-slate-400 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all shadow-sm" type="text" value="Site B, North Sector"/>
+<div class="absolute inset-y-0 right-0 pr-2 flex items-center">
+<button class="p-1.5 rounded-lg text-slate-400 hover:text-primary hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-[20px]">my_location</span>
+</button>
+</div>
+</div>
+<div class="w-full h-24 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-800 mt-2 relative opacity-80 grayscale-[30%]">
+<img alt="Map Preview" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBhCAh4wgPWA2EIXGsZDO_j4ObnFeTbaoJ8EszynUZACZt2L1ZH2GgcaCgOuIqiCgaBvp5t-J5und6tfAOX0JZ09Yu9-8Re0fz7nZUdfSivcOs2O1vbVdwGcsCLKtKUv79i7rRMLatni_EKGDGTm85b7O7AqnMi1YXJS-E3WgOZiVhzEQFD81QcAuLAoeSJqtgBw_WjSC2RF1Hm-fLBLoGwvL-qJOUH8bd8yiyFVR2foA-kZhQ4s9JWxAXgO_1PENl9bC-gPxuhGJBu"/>
+<div class="absolute inset-0 bg-primary/10"></div>
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-primary drop-shadow-md">
+<span class="material-symbols-outlined text-3xl filled">location_on</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4">
+<div class="space-y-1.5">
+<label class="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider ml-1">Date</label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-slate-400 group-focus-within:text-primary transition-colors text-[20px]">calendar_today</span>
+</div>
+<input class="w-full bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-800 rounded-xl pl-10 pr-4 py-3 text-sm font-medium text-slate-900 dark:text-white placeholder:text-slate-400 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all shadow-sm" type="text" value="Oct 24, 2023"/>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider ml-1">Time</label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-slate-400 group-focus-within:text-primary transition-colors text-[20px]">schedule</span>
+</div>
+<input class="w-full bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-800 rounded-xl pl-10 pr-4 py-3 text-sm font-medium text-slate-900 dark:text-white placeholder:text-slate-400 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all shadow-sm" type="text" value="09:41 AM"/>
+</div>
+</div>
+</div>
+<div class="space-y-1.5">
+<label class="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider ml-1">Description</label>
+<textarea class="w-full bg-white dark:bg-surface-dark border border-slate-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm font-medium text-slate-900 dark:text-white placeholder:text-slate-400 focus:ring-2 focus:ring-primary/20 focus:border-primary outline-none transition-all shadow-sm h-32 resize-none align-top" placeholder="Add details about this moment..."></textarea>
+</div>
+<div class="space-y-1.5 pb-4">
+<label class="block text-xs font-bold text-slate-500 dark:text-slate-400 uppercase tracking-wider ml-1">Category</label>
+<div class="flex gap-2 flex-wrap">
+<button class="px-3 py-1.5 rounded-lg bg-primary/10 text-primary text-xs font-semibold border border-primary/20">Progress Update</button>
+<button class="px-3 py-1.5 rounded-lg bg-white dark:bg-surface-dark text-slate-500 dark:text-slate-400 text-xs font-medium border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-600 transition-colors">Safety</button>
+<button class="px-3 py-1.5 rounded-lg bg-white dark:bg-surface-dark text-slate-500 dark:text-slate-400 text-xs font-medium border border-slate-200 dark:border-slate-800 hover:border-slate-300 dark:hover:border-slate-600 transition-colors">Inspection</button>
+<button class="px-3 py-1.5 rounded-lg bg-white dark:bg-surface-dark text-slate-500 dark:text-slate-400 text-xs font-medium border border-slate-200 dark:border-slate-800 border-dashed hover:border-slate-400 transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">add</span> New
+                    </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<nav class="fixed bottom-0 w-full z-40 bg-white/90 dark:bg-surface-dark/90 backdrop-blur-lg border-t border-slate-200 dark:border-slate-800 pb-safe">
+<div class="grid grid-cols-3 items-center justify-around h-16 max-w-md mx-auto">
+<button class="flex flex-col items-center justify-center gap-1 w-full h-full text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors group">
+<span class="material-symbols-outlined text-[24px] group-hover:-translate-y-0.5 transition-transform">view_timeline</span>
+<span class="text-[10px] font-medium">Timeline</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 w-full h-full text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors group">
+<span class="material-symbols-outlined text-[24px] group-hover:-translate-y-0.5 transition-transform">map</span>
+<span class="text-[10px] font-medium">Map View</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 w-full h-full text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors group">
+<span class="material-symbols-outlined text-[24px] group-hover:-translate-y-0.5 transition-transform">settings</span>
+<span class="text-[10px] font-medium">Settings</span>
+</button>
+</div>
+<div class="h-[env(safe-area-inset-bottom)] w-full"></div>
+</nav>
+
+</body></html>

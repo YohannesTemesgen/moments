@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin Dashboard Timeline</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#197fe6",
+              "background-light": "#f6f7f8",
+              "background-dark": "#111921",
+              "surface-dark": "#1c2126",
+              "surface-dark-highlight": "#2a323b",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        /* Custom scrollbar hiding for clean mobile look */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white overflow-hidden h-screen w-full flex flex-col">
+<!-- Sticky Header -->
+<header class="shrink-0 z-20 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+<div class="flex items-center justify-between px-4 py-3">
+<div class="flex items-center gap-3">
+<div class="relative group cursor-pointer">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-9 ring-2 ring-slate-200 dark:ring-slate-700" data-alt="User profile avatar showing a professional headshot" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDojoAUUMP_j79tRBUYGEN-wZCGC0GSubOcT0mUjxqvy8QNFrArZ7zFCLvBnzjahuH0--xX9l8OGpmNvUqvJQaVuLWSFbW8MadEAtB6HRR5eeprXnbFqVXQoMuVBMTvgNXKJd2KXZuaG4cGzeO71ofVZkI-BBsgQatlrBS2sA0Xwv51mzh_FthJzTFCMUt1nzubjVY4jkiU14S9RTv3jasReDDBmj7A_Tpw6kXANfF964KEFK8tAXCFhyEZQFPTNwiXY4DwrSPWLNSp");'>
+</div>
+<div class="absolute bottom-0 right-0 size-2.5 bg-green-500 rounded-full border-2 border-background-light dark:border-background-dark"></div>
+</div>
+<h1 class="text-lg font-bold tracking-tight">Timeline</h1>
+</div>
+<button class="flex items-center justify-center size-10 rounded-full hover:bg-slate-200 dark:hover:bg-surface-dark transition-colors text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined">search</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 overflow-y-auto no-scrollbar relative w-full pb-24">
+<!-- Section: Today -->
+<div class="relative w-full max-w-md mx-auto">
+<!-- Sticky Section Header -->
+<div class="sticky top-0 z-10 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm px-4 py-3 border-b border-transparent">
+<h3 class="text-sm font-semibold uppercase tracking-wider text-primary">Today, Oct 24</h3>
+</div>
+<!-- Timeline Container -->
+<div class="px-4 pb-4">
+<!-- Vertical Line Guide -->
+<div class="relative border-l-2 border-slate-200 dark:border-slate-800 ml-3 space-y-6 pt-4 pb-2">
+<!-- Card 1 -->
+<div class="relative pl-6 group">
+<!-- Timeline Dot -->
+<div class="absolute -left-[9px] top-6 size-4 rounded-full border-4 border-background-light dark:border-background-dark bg-primary box-content"></div>
+<div class="flex flex-col rounded-xl overflow-hidden bg-white dark:bg-surface-dark shadow-sm border border-slate-200 dark:border-slate-800/50">
+<!-- Card Image -->
+<div class="w-full h-48 bg-slate-200 dark:bg-slate-800 relative">
+<div class="w-full h-full bg-center bg-cover" data-alt="Construction site foundation pouring with concrete trucks" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCOBccA_3iPse_6p-VSLZbRMCieGpgELc7mICLel9VHA9zK6WdVacyXrcBNpd_bujEDbpUnrJNnPA4isS-t_qDB5EuE_AA09m7H57glUqxfR3_lASkOD4W0ZBaG0ynFnqJdsixRDU_f6pJbBPwoHPZsSQLEMP83UpLkcQgLGBLCCnN_LsfDh0OY5AgJDBr3fKN36SZjfA94Prf6P2Rl1SUI7d2JR2d4EQf49jJW_c8YVjkALZMpJ4V-1p6TU6xLOc38oS5d20AJHL2-");'>
+</div>
+<div class="absolute top-2 right-2">
+<button class="size-8 flex items-center justify-center rounded-full bg-black/40 backdrop-blur-md text-white hover:bg-black/60 transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- Card Content -->
+<div class="p-4 flex flex-col gap-3">
+<div class="flex justify-between items-start">
+<div>
+<h4 class="text-base font-bold text-slate-900 dark:text-white leading-tight">Foundation Pouring</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Updates on Sector B groundwork</p>
+</div>
+<span class="px-2 py-1 rounded bg-blue-500/10 text-primary text-xs font-medium">In Progress</span>
+</div>
+<div class="h-px bg-slate-100 dark:bg-slate-700/50 w-full"></div>
+<div class="flex items-center justify-between text-sm text-slate-500 dark:text-slate-400">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary">location_on</span>
+<span class="truncate max-w-[120px]">Site B, North Sector</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span>10:42 AM</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="relative pl-6 group">
+<!-- Timeline Dot -->
+<div class="absolute -left-[5px] top-6 size-2.5 rounded-full bg-slate-300 dark:bg-slate-600"></div>
+<div class="flex flex-col rounded-xl overflow-hidden bg-white dark:bg-surface-dark shadow-sm border border-slate-200 dark:border-slate-800/50">
+<!-- Card Image -->
+<div class="w-full h-48 bg-slate-200 dark:bg-slate-800 relative">
+<div class="w-full h-full bg-center bg-cover" data-alt="Safety inspection team looking at blueprints in main lobby" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCihcL8I7t0WgIrVpetiQl-5gkEztK78wkmAMSo6SzIHfgJ6vYydTd_4c2XtnLn-1TKm4xaqdMVdy2jDB47NTh_BkrkJvV-hdvPn1CducXWWp8DibYO3FtS2Ofs3G6i23Ny7SA-2R1mdLid0aJj2nvD5IzbucmerNb87at0SaYIS8vn0GV06HRW-2w3w49us5zQALEV1CVHi3pS4qXNz-XVaSQ-slo_37dfkSyvFf8tVkxr6B2fZuE7hwKBW3f4iOP7SbCZp-psdbZA");'>
+</div>
+<div class="absolute top-2 right-2">
+<button class="size-8 flex items-center justify-center rounded-full bg-black/40 backdrop-blur-md text-white hover:bg-black/60 transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- Card Content -->
+<div class="p-4 flex flex-col gap-3">
+<div>
+<h4 class="text-base font-bold text-slate-900 dark:text-white leading-tight">Safety Inspection</h4>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Routine checkup - Q4</p>
+</div>
+<div class="flex items-center justify-between text-sm text-slate-500 dark:text-slate-400 pt-1">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary">location_on</span>
+<span class="truncate max-w-[120px]">Main Lobby</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span>09:15 AM</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Section: Yesterday -->
+<div class="relative w-full max-w-md mx-auto mt-2">
+<!-- Sticky Section Header -->
+<div class="sticky top-0 z-10 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-sm px-4 py-3 border-b border-transparent">
+<h3 class="text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">Yesterday, Oct 23</h3>
+</div>
+<!-- Timeline Container -->
+<div class="px-4 pb-4">
+<div class="relative border-l-2 border-slate-200 dark:border-slate-800 ml-3 space-y-6 pt-4 pb-2">
+<!-- Card 3 -->
+<div class="relative pl-6 group">
+<!-- Timeline Dot -->
+<div class="absolute -left-[5px] top-6 size-2.5 rounded-full bg-slate-300 dark:bg-slate-600"></div>
+<div class="flex flex-col rounded-xl overflow-hidden bg-white dark:bg-surface-dark shadow-sm border border-slate-200 dark:border-slate-800/50 opacity-80">
+<!-- Card Image -->
+<div class="w-full h-40 bg-slate-200 dark:bg-slate-800 relative">
+<div class="w-full h-full bg-center bg-cover grayscale-[30%]" data-alt="Delivery truck arriving at loading dock at sunset" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBm7AteG5-w376bfNapcsjxleJTrYEh8GFoD49A-sU3ev6F2DhFokA-DNOoKFTSDClv_c0uNSWMyHxqujpfVgR3cMjO70PxU_nvLAToSwpVsJBywqHD_9yAKa306e7tB_92Tll4lTMUx6UNIpyt_fgZU2dcW5PdR1xJMwfU863WVptFZ7xjLgbx7QxwdxUqcCDGAVbWFBn2rfxFJHnlU2kJ0s34DDB2WnhddFVTb3dtprnPzaql4ePidDoySpkWhGfoONUzii7rjKjP");'>
+</div>
+<div class="absolute top-2 right-2">
+<button class="size-8 flex items-center justify-center rounded-full bg-black/40 backdrop-blur-md text-white hover:bg-black/60 transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</div>
+</div>
+<!-- Card Content -->
+<div class="p-4 flex flex-col gap-2">
+<h4 class="text-base font-bold text-slate-900 dark:text-white leading-tight">Material Delivery</h4>
+<div class="flex items-center justify-between text-sm text-slate-500 dark:text-slate-400 pt-1">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px] text-primary">location_on</span>
+<span class="truncate max-w-[120px]">Loading Dock 4</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[18px]">schedule</span>
+<span>04:30 PM</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- FAB -->
+<div class="fixed bottom-24 right-5 z-40">
+<button class="flex items-center justify-center size-14 rounded-full bg-primary text-white shadow-lg shadow-primary/40 hover:scale-105 active:scale-95 transition-transform duration-200">
+<span class="material-symbols-outlined text-[32px]">add</span>
+</button>
+</div>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 w-full z-30 bg-white/90 dark:bg-surface-dark/90 backdrop-blur-lg border-t border-slate-200 dark:border-slate-800 pb-safe">
+<div class="flex items-center justify-around h-16 max-w-md mx-auto">
+<!-- Tab 1: Timeline (Active) -->
+<button class="flex flex-col items-center justify-center gap-1 w-full h-full text-primary">
+<span class="material-symbols-outlined filled text-[24px]">view_timeline</span>
+<span class="text-[10px] font-medium">Timeline</span>
+</button>
+<!-- Tab 2: Map -->
+<button class="flex flex-col items-center justify-center gap-1 w-full h-full text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
+<span class="material-symbols-outlined text-[24px]">map</span>
+<span class="text-[10px] font-medium">Map View</span>
+</button>
+<!-- Tab 3: Users -->
+<button class="flex flex-col items-center justify-center gap-1 w-full h-full text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
+<span class="material-symbols-outlined text-[24px]">group</span>
+<span class="text-[10px] font-medium">Users</span>
+</button>
+<!-- Tab 4: Settings -->
+<button class="flex flex-col items-center justify-center gap-1 w-full h-full text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+<span class="text-[10px] font-medium">Settings</span>
+</button>
+</div>
+<!-- Safe area spacing for iOS home indicator -->
+<div class="h-[env(safe-area-inset-bottom)] w-full"></div>
+</nav>
+</body></html>

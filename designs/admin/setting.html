@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Admin Settings</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#197fe6",
+              "background-light": "#f6f7f8",
+              "background-dark": "#111921",
+              "surface-dark": "#1c2126",
+              "surface-dark-highlight": "#2a323b",
+            },
+            fontFamily: {
+              "display": ["Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #197fe6;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #197fe6;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white overflow-x-hidden h-screen w-full flex flex-col relative">
+<header class="sticky top-0 left-0 right-0 z-30 pt-safe transition-colors duration-300 bg-white/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<div class="pb-3 pt-3 px-4 flex items-center justify-between">
+<h1 class="text-xl font-bold tracking-tight text-slate-900 dark:text-white">Settings</h1>
+<div class="relative group cursor-pointer">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-9 ring-2 ring-white dark:ring-slate-700 shadow-sm" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDojoAUUMP_j79tRBUYGEN-wZCGC0GSubOcT0mUjxqvy8QNFrArZ7zFCLvBnzjahuH0--xX9l8OGpmNvUqvJQaVuLWSFbW8MadEAtB6HRR5eeprXnbFqVXQoMuVBMTvgNXKJd2KXZuaG4cGzeO71ofVZkI-BBsgQatlrBS2sA0Xwv51mzh_FthJzTFCMUt1nzubjVY4jkiU14S9RTv3jasReDDBmj7A_Tpw6kXANfF964KEFK8tAXCFhyEZQFPTNwiXY4DwrSPWLNSp");'>
+</div>
+</div>
+</div>
+</header>
+<main class="flex-1 w-full overflow-y-auto no-scrollbar pb-32">
+<div class="px-4 py-6 space-y-6">
+<section class="bg-white dark:bg-surface-dark rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="p-4 flex items-center gap-4">
+<div class="relative shrink-0">
+<div class="size-16 rounded-full bg-cover bg-center" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDojoAUUMP_j79tRBUYGEN-wZCGC0GSubOcT0mUjxqvy8QNFrArZ7zFCLvBnzjahuH0--xX9l8OGpmNvUqvJQaVuLWSFbW8MadEAtB6HRR5eeprXnbFqVXQoMuVBMTvgNXKJd2KXZuaG4cGzeO71ofVZkI-BBsgQatlrBS2sA0Xwv51mzh_FthJzTFCMUt1nzubjVY4jkiU14S9RTv3jasReDDBmj7A_Tpw6kXANfF964KEFK8tAXCFhyEZQFPTNwiXY4DwrSPWLNSp");'></div>
+<button class="absolute bottom-0 right-0 p-1 bg-primary text-white rounded-full border-2 border-white dark:border-surface-dark shadow-sm">
+<span class="material-symbols-outlined text-[14px]">edit</span>
+</button>
+</div>
+<div class="flex-1 min-w-0">
+<h2 class="text-lg font-bold text-slate-900 dark:text-white truncate">Admin User</h2>
+<p class="text-sm text-slate-500 dark:text-slate-400 truncate">admin@example.com</p>
+<span class="inline-block mt-1 px-2 py-0.5 rounded text-[10px] font-medium bg-primary/10 text-primary border border-primary/20">Super Admin</span>
+</div>
+</div>
+<div class="border-t border-slate-100 dark:border-slate-800">
+<button class="w-full flex items-center justify-between p-4 hover:bg-slate-50 dark:hover:bg-surface-dark-highlight transition-colors text-left">
+<span class="text-sm font-medium">Manage Profile</span>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</button>
+</div>
+</section>
+<section>
+<h3 class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 px-1">General</h3>
+<div class="bg-white dark:bg-surface-dark rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden divide-y divide-slate-100 dark:divide-slate-800">
+<button class="w-full flex items-center gap-3 p-4 hover:bg-slate-50 dark:hover:bg-surface-dark-highlight transition-colors text-left group">
+<div class="p-2 rounded-lg bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined">group</span>
+</div>
+<div class="flex-1">
+<span class="text-sm font-medium block text-slate-900 dark:text-white">User Management</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">Manage access and roles</span>
+</div>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</button>
+<button class="w-full flex items-center gap-3 p-4 hover:bg-slate-50 dark:hover:bg-surface-dark-highlight transition-colors text-left group">
+<div class="p-2 rounded-lg bg-purple-50 dark:bg-purple-900/20 text-purple-600 dark:text-purple-400 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined">notifications</span>
+</div>
+<div class="flex-1">
+<span class="text-sm font-medium block text-slate-900 dark:text-white">Notification Settings</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">Push &amp; email alerts</span>
+</div>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</button>
+<button class="w-full flex items-center gap-3 p-4 hover:bg-slate-50 dark:hover:bg-surface-dark-highlight transition-colors text-left group">
+<div class="p-2 rounded-lg bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 group-hover:scale-105 transition-transform">
+<span class="material-symbols-outlined">shield</span>
+</div>
+<div class="flex-1">
+<span class="text-sm font-medium block text-slate-900 dark:text-white">Privacy &amp; Security</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">Passcode, FaceID, Data</span>
+</div>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</button>
+</div>
+</section>
+<section>
+<h3 class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 px-1">Preferences</h3>
+<div class="bg-white dark:bg-surface-dark rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden divide-y divide-slate-100 dark:divide-slate-800">
+<div class="p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">dark_mode</span>
+</div>
+<span class="text-sm font-medium text-slate-900 dark:text-white">Dark Mode</span>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 border-slate-200 dark:border-slate-700 appearance-none cursor-pointer transition-all duration-300 translate-x-full" id="toggle-dark" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-primary cursor-pointer transition-colors duration-300" for="toggle-dark"></label>
+</div>
+</div>
+<div class="p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">location_on</span>
+</div>
+<span class="text-sm font-medium text-slate-900 dark:text-white">Location Services</span>
+</div>
+<div class="relative inline-block w-12 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 border-slate-200 dark:border-slate-700 appearance-none cursor-pointer transition-all duration-300 translate-x-full" id="toggle-location" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-6 rounded-full bg-primary cursor-pointer transition-colors duration-300" for="toggle-location"></label>
+</div>
+</div>
+</div>
+</section>
+<section>
+<h3 class="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-2 px-1">Support</h3>
+<div class="bg-white dark:bg-surface-dark rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden divide-y divide-slate-100 dark:divide-slate-800">
+<button class="w-full flex items-center gap-3 p-4 hover:bg-slate-50 dark:hover:bg-surface-dark-highlight transition-colors text-left">
+<span class="text-sm font-medium flex-1 text-slate-900 dark:text-white">Help Center</span>
+<span class="material-symbols-outlined text-slate-400">open_in_new</span>
+</button>
+<button class="w-full flex items-center gap-3 p-4 hover:bg-slate-50 dark:hover:bg-surface-dark-highlight transition-colors text-left">
+<span class="text-sm font-medium flex-1 text-slate-900 dark:text-white">Terms of Service</span>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</button>
+<button class="w-full flex items-center gap-3 p-4 hover:bg-slate-50 dark:hover:bg-surface-dark-highlight transition-colors text-left">
+<span class="text-sm font-medium flex-1 text-slate-900 dark:text-white">Privacy Policy</span>
+<span class="material-symbols-outlined text-slate-400">chevron_right</span>
+</button>
+</div>
+</section>
+<div class="text-center pt-4 pb-8">
+<p class="text-xs text-slate-400">Version 2.4.1 (Build 20231024)</p>
+<button class="mt-4 text-red-500 hover:text-red-600 text-sm font-medium transition-colors px-4 py-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-900/10">
+            Log Out
+          </button>
+</div>
+</div>
+</main>
+<nav class="fixed bottom-0 w-full z-40 bg-white/90 dark:bg-surface-dark/90 backdrop-blur-lg border-t border-slate-200 dark:border-slate-800 pb-safe">
+<div class="flex items-center justify-around h-16 max-w-md mx-auto">
+<button class="flex flex-col items-center justify-center gap-1 w-full h-full text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
+<span class="material-symbols-outlined text-[24px]">calendar_month</span>
+<span class="text-[10px] font-medium">Calendar</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 w-full h-full text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
+<span class="material-symbols-outlined text-[24px]">map</span>
+<span class="text-[10px] font-medium">Map View</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 w-full h-full text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
+<span class="material-symbols-outlined text-[24px]">group</span>
+<span class="text-[10px] font-medium">Users</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-1 w-full h-full text-primary">
+<span class="material-symbols-outlined text-[24px] filled">settings</span>
+<span class="text-[10px] font-medium">Settings</span>
+</button>
+</div>
+<div class="h-[env(safe-area-inset-bottom)] w-full"></div>
+</nav>
+
+</body></html>

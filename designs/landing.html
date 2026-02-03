@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Stranger Things Countdown</title>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Noto+Sans:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#ea2a33",
+              "stranger-red": "#E50914",
+              "background-light": "#f8f6f6",
+              "background-dark": "#000000",},
+            fontFamily: {
+              "display": ["Newsreader", "serif"],
+              "sans": ["Noto Sans", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>body {
+            -webkit-font-smoothing: none;
+            -moz-osx-font-smoothing: grayscale;
+        }.retro-hover:hover {
+            text-shadow: 0 0 1px currentColor;
+        }.stranger-outline {
+            color: transparent;
+            -webkit-text-stroke: 2px #E50914;
+            text-stroke: 2px #E50914;
+            text-shadow: 0 0 10px rgba(229, 9, 20, 0.5), 0 0 20px rgba(229, 9, 20, 0.3);
+        }.stranger-outline-sm {
+            color: transparent;
+            -webkit-text-stroke: 1px #E50914;
+            text-stroke: 1px #E50914;
+            text-shadow: 0 0 8px rgba(229, 9, 20, 0.4);
+        }.stranger-outline-light {
+             color: transparent;
+            -webkit-text-stroke: 1px #E50914;
+            text-stroke: 1px #E50914;
+            text-shadow: 0 0 8px rgba(229, 9, 20, 0.4);
+        }
+    </style>
+</head>
+<body class="relative flex min-h-screen w-full flex-col bg-background-light dark:bg-background-dark text-white font-display overflow-x-hidden selection:bg-primary selection:text-white">
+<!-- Video Background -->
+<video id="bgVideo" class="fixed top-0 left-0 w-full h-full object-cover opacity-0 transition-opacity duration-1000 z-[-1]" autoplay muted loop>
+    <source src="video.mp4" type="video/mp4">
+</video>
+<header class="w-full flex items-center justify-between border-b border-[#1a1a1a] px-6 py-4 md:px-12">
+<div class="flex items-center gap-3 text-white group cursor-default">
+<span class="material-symbols-outlined text-primary text-2xl group-hover:scale-110 transition-transform duration-300">movie_filter</span>
+<h2 class="text-white text-lg font-bold tracking-widest uppercase leading-tight">Stranger Things</h2>
+</div>
+<div class="hidden md:flex items-center gap-6">
+<span class="text-xs font-medium tracking-[0.2em] text-[#666] uppercase">Official Teaser Site</span>
+</div>
+</header>
+<main class="flex-grow flex flex-col items-center justify-center w-full px-4 py-12 relative z-0">
+<div class="flex flex-col items-center text-center gap-4 mb-16 max-w-4xl mx-auto animate-fade-in">
+<p class="text-primary font-bold tracking-[0.4em] text-sm md:text-base uppercase border-b border-primary/30 pb-1">Season 5</p>
+<h1 class="text-white text-5xl md:text-7xl lg:text-9xl font-black italic tracking-tighter uppercase leading-[0.9] retro-hover cursor-default">
+                The <br class="md:hidden"/> Premiere
+            </h1>
+</div>
+<div class="w-full max-w-[1200px] mx-auto mb-16">
+<div class="flex flex-wrap items-start justify-center text-center gap-2 md:gap-8 lg:gap-12">
+<div class="flex flex-col items-center flex-1 min-w-[80px]">
+<div id="days" class="text-6xl md:text-8xl lg:text-[10rem] leading-none font-bold stranger-outline tabular-nums tracking-tighter">00</div>
+<div class="w-full h-px bg-[#333] my-4"></div>
+<p class="text-[#666] text-xs md:text-sm font-medium tracking-[0.3em] uppercase">Days</p>
+</div>
+<div class="hidden md:block text-6xl md:text-8xl lg:text-[9rem] leading-none font-light stranger-outline-light opacity-80 -mt-2">:</div>
+<div class="flex flex-col items-center flex-1 min-w-[80px]">
+<div id="hours" class="text-6xl md:text-8xl lg:text-[10rem] leading-none font-bold stranger-outline tabular-nums tracking-tighter">00</div>
+<div class="w-full h-px bg-[#333] my-4"></div>
+<p class="text-[#666] text-xs md:text-sm font-medium tracking-[0.3em] uppercase">Hours</p>
+</div>
+<div class="hidden md:block text-6xl md:text-8xl lg:text-[9rem] leading-none font-light stranger-outline-light opacity-80 -mt-2">:</div>
+<div class="flex flex-col items-center flex-1 min-w-[80px]">
+<div id="minutes" class="text-6xl md:text-8xl lg:text-[10rem] leading-none font-bold stranger-outline tabular-nums tracking-tighter">00</div>
+<div class="w-full h-px bg-[#333] my-4"></div>
+<p class="text-[#666] text-xs md:text-sm font-medium tracking-[0.3em] uppercase">Minutes</p>
+</div>
+<div class="hidden md:block text-6xl md:text-8xl lg:text-[9rem] leading-none font-light stranger-outline-light opacity-80 -mt-2">:</div>
+<div class="flex flex-col items-center flex-1 min-w-[80px]">
+<div id="seconds" class="text-6xl md:text-8xl lg:text-[10rem] leading-none font-bold stranger-outline tabular-nums tracking-tighter">00</div>
+<div class="w-full h-px bg-[#333] my-4"></div>
+<p class="text-[#666] text-xs md:text-sm font-medium tracking-[0.3em] uppercase">Seconds</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-center gap-8">
+<p class="stranger-outline-sm text-sm md:text-base font-bold tracking-[0.5em] uppercase text-center">
+                Countdown to the Upside Down
+            </p>
+<button class="group flex items-center justify-center gap-3 min-w-[200px] cursor-pointer rounded-lg border-2 border-primary/50 bg-transparent px-8 py-4 text-white hover:bg-primary/10 hover:border-primary transition-all duration-300">
+<span class="text-base font-bold tracking-[0.15em] uppercase">Notify Me</span>
+<span class="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</div>
+</main>
+<footer class="w-full py-8 text-center border-t border-[#1a1a1a] mt-auto">
+<div class="flex flex-col items-center gap-4">
+<div class="flex gap-6 text-[#444]">
+<span class="material-symbols-outlined text-xl cursor-pointer hover:text-primary transition-colors">public</span>
+<span class="material-symbols-outlined text-xl cursor-pointer hover:text-primary transition-colors">share</span>
+<span class="material-symbols-outlined text-xl cursor-pointer hover:text-primary transition-colors">mail</span>
+</div>
+<p class="text-[#333] text-[10px] uppercase tracking-widest">
+                © 2024 Netflix, Inc. All rights reserved.
+            </p>
+</div>
+</footer>
+
+<script>
+// Set target date (7 days from now for demo)
+const targetDate = new Date();
+targetDate.setDate(targetDate.getDate() + 7);
+
+// Video display logic
+const video = document.getElementById('bgVideo');
+let videoInterval;
+
+function showVideo() {
+    video.style.opacity = '0.3'; // Show video
+    setTimeout(() => {
+        video.style.opacity = '0'; // Hide video
+    }, 7000); // Hide after 7 seconds
+}
+
+// Start the 7-second show/hide cycle
+videoInterval = setInterval(showVideo, 14000); // Total cycle: 7s show + 7s hide
+
+// Countdown function
+function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = targetDate.getTime() - now;
+
+    if (distance < 0) {
+        clearInterval(countdownInterval);
+        document.getElementById('days').textContent = '00';
+        document.getElementById('hours').textContent = '00';
+        document.getElementById('minutes').textContent = '00';
+        document.getElementById('seconds').textContent = '00';
+        return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById('days').textContent = String(days).padStart(2, '0');
+    document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+    document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+    document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+}
+
+// Update countdown every second
+const countdownInterval = setInterval(updateCountdown, 1000);
+
+// Initial call
+document.addEventListener('DOMContentLoaded', function() {
+    updateCountdown();
+    // Show video immediately on load
+    setTimeout(showVideo, 1000);
+});
+</script>
+</body></html>
