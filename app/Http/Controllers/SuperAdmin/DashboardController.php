@@ -34,12 +34,14 @@ class DashboardController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:8|confirmed',
+            'tenant_id' => 'required|exists:tenants,id',
         ]);
 
         User::create([
             'name' => $validated['name'],
             'email' => $validated['email'],
             'password' => Hash::make($validated['password']),
+            'tenant_id' => $validated['tenant_id'],
         ]);
 
         return redirect()->route('superadmin.users.index')->with('success', 'User created successfully.');

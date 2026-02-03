@@ -3,9 +3,11 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Stancl\Tenancy\Database\Concerns\BelongsToTenant;
 
 class Setting extends Model
 {
+    use BelongsToTenant;
     protected $fillable = ['key', 'value'];
 
     public static function get($key, $default = null)

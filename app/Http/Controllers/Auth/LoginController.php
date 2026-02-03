@@ -20,6 +20,11 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
 
+        // Add tenant_id to credentials if we are in a tenant context
+        if (tenant()) {
+            $credentials['tenant_id'] = tenant('id');
+        }
+
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
             return redirect()->intended('/admin/timeline');

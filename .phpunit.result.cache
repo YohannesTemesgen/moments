@@ -1,0 +1,1 @@
+{"version":2,"defects":{"Tests\\Feature\\TenantIsolationTest::test_tenant_data_is_isolated":8,"Tests\\Feature\\TenantIsolationTest::test_user_authentication_is_tenant_aware":7},"times":{"Tests\\Feature\\TenantIsolationTest::test_tenant_data_is_isolated":0.055,"Tests\\Feature\\TenantIsolationTest::test_user_authentication_is_tenant_aware":0.296}}

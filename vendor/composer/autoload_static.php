@@ -20,6 +20,7 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
         '662a729f963d39afe703c9d9b7ab4a8c' => __DIR__ . '/..' . '/symfony/polyfill-php83/bootstrap.php',
         '35a6ad97d21e794e7e22a17d806652e4' => __DIR__ . '/..' . '/nunomaduro/termwind/src/Functions.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
+        'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
         '2203a247e6fda86070a5e4e07aed533a' => __DIR__ . '/..' . '/symfony/clock/Resources/now.php',
         '09f6b20656683369174dd6fa83b7e5fb' => __DIR__ . '/..' . '/symfony/polyfill-uuid/bootstrap.php',
         'a1105708a18b76903365ca1c4aa61b02' => __DIR__ . '/..' . '/symfony/translation/Resources/functions.php',
@@ -27,7 +28,6 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
         '47e1160838b5e5a10346ac4084b58c23' => __DIR__ . '/..' . '/laravel/prompts/src/helpers.php',
         '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '801c31d8ed748cfa537fa45402288c95' => __DIR__ . '/..' . '/psy/psysh/src/functions.php',
-        'e39a8b23c42d4e1452234d762b03835a' => __DIR__ . '/..' . '/ramsey/uuid/src/functions.php',
         '9d2b9fc6db0f153a0a149fefb182415e' => __DIR__ . '/..' . '/symfony/polyfill-php84/bootstrap.php',
         '476ca15b8d69b04665cd879be9cb4c68' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Collections/functions.php',
         '265b4faa2b3a9766332744949e83bf97' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Collections/helpers.php',
@@ -42,24 +42,25 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
         'ce9671a430e4846b44e1c68c7611f9f5' => __DIR__ . '/..' . '/mockery/mockery/library/Mockery.php',
         'a1cfe24d14977df6878b9bf804af2d1c' => __DIR__ . '/..' . '/nunomaduro/collision/src/Adapters/Phpunit/Autoload.php',
         'ec07570ca5a812141189b1fa81503674' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert/Functions.php',
+        'f36d7ea9144e9f8ff76be0eaaff1ee80' => __DIR__ . '/..' . '/stancl/tenancy/src/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
-        'v' => 
+        'v' =>
         array (
             'voku\\' => 5,
         ),
-        'W' => 
+        'W' =>
         array (
             'Whoops\\' => 7,
         ),
-        'T' => 
+        'T' =>
         array (
             'TijsVerkoyen\\CssToInlineStyles\\' => 31,
             'Tests\\' => 6,
             'Termwind\\' => 9,
         ),
-        'S' => 
+        'S' =>
         array (
             'Symfony\\Polyfill\\Uuid\\' => 22,
             'Symfony\\Polyfill\\Php85\\' => 23,
@@ -91,13 +92,16 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
             'Symfony\\Component\\CssSelector\\' => 30,
             'Symfony\\Component\\Console\\' => 26,
             'Symfony\\Component\\Clock\\' => 24,
+            'Stancl\\VirtualColumn\\' => 21,
+            'Stancl\\Tenancy\\' => 15,
+            'Stancl\\JobPipeline\\' => 19,
         ),
-        'R' => 
+        'R' =>
         array (
             'Ramsey\\Uuid\\' => 12,
             'Ramsey\\Collection\\' => 18,
         ),
-        'P' => 
+        'P' =>
         array (
             'Psy\\' => 4,
             'Psr\\SimpleCache\\' => 16,
@@ -110,17 +114,17 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
             'PhpParser\\' => 10,
             'PhpOption\\' => 10,
         ),
-        'N' => 
+        'N' =>
         array (
             'NunoMaduro\\Collision\\' => 21,
             'Nette\\' => 6,
         ),
-        'M' => 
+        'M' =>
         array (
             'Monolog\\' => 8,
             'Mockery\\' => 8,
         ),
-        'L' => 
+        'L' =>
         array (
             'League\\Uri\\' => 11,
             'League\\MimeTypeDetection\\' => 25,
@@ -134,12 +138,12 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
             'Laravel\\Prompts\\' => 16,
             'Laravel\\Pail\\' => 13,
         ),
-        'I' => 
+        'I' =>
         array (
             'Illuminate\\Support\\' => 19,
             'Illuminate\\' => 11,
         ),
-        'G' => 
+        'G' =>
         array (
             'GuzzleHttp\\UriTemplate\\' => 23,
             'GuzzleHttp\\Psr7\\' => 16,
@@ -147,16 +151,17 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
             'GuzzleHttp\\' => 11,
             'GrahamCampbell\\ResultType\\' => 26,
         ),
-        'F' => 
+        'F' =>
         array (
             'Fruitcake\\Cors\\' => 15,
             'Faker\\' => 6,
+            'Facade\\IgnitionContracts\\' => 25,
         ),
-        'E' => 
+        'E' =>
         array (
             'Egulias\\EmailValidator\\' => 23,
         ),
-        'D' => 
+        'D' =>
         array (
             'Dotenv\\' => 7,
             'Doctrine\\Inflector\\' => 19,
@@ -166,364 +171,380 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
             'Database\\Seeders\\' => 17,
             'Database\\Factories\\' => 19,
         ),
-        'C' => 
+        'C' =>
         array (
             'Cron\\' => 5,
             'Carbon\\Doctrine\\' => 16,
             'Carbon\\' => 7,
         ),
-        'B' => 
+        'B' =>
         array (
             'Brick\\Math\\' => 11,
         ),
-        'A' => 
+        'A' =>
         array (
             'App\\' => 4,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'voku\\' => 
+        'voku\\' =>
         array (
             0 => __DIR__ . '/..' . '/voku/portable-ascii/src/voku',
         ),
-        'Whoops\\' => 
+        'Whoops\\' =>
         array (
             0 => __DIR__ . '/..' . '/filp/whoops/src/Whoops',
         ),
-        'TijsVerkoyen\\CssToInlineStyles\\' => 
+        'TijsVerkoyen\\CssToInlineStyles\\' =>
         array (
             0 => __DIR__ . '/..' . '/tijsverkoyen/css-to-inline-styles/src',
         ),
-        'Tests\\' => 
+        'Tests\\' =>
         array (
             0 => __DIR__ . '/../..' . '/tests',
         ),
-        'Termwind\\' => 
+        'Termwind\\' =>
         array (
             0 => __DIR__ . '/..' . '/nunomaduro/termwind/src',
         ),
-        'Symfony\\Polyfill\\Uuid\\' => 
+        'Symfony\\Polyfill\\Uuid\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-uuid',
         ),
-        'Symfony\\Polyfill\\Php85\\' => 
+        'Symfony\\Polyfill\\Php85\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php85',
         ),
-        'Symfony\\Polyfill\\Php84\\' => 
+        'Symfony\\Polyfill\\Php84\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php84',
         ),
-        'Symfony\\Polyfill\\Php83\\' => 
+        'Symfony\\Polyfill\\Php83\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php83',
         ),
-        'Symfony\\Polyfill\\Php80\\' => 
+        'Symfony\\Polyfill\\Php80\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-php80',
         ),
-        'Symfony\\Polyfill\\Mbstring\\' => 
+        'Symfony\\Polyfill\\Mbstring\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-mbstring',
         ),
-        'Symfony\\Polyfill\\Intl\\Normalizer\\' => 
+        'Symfony\\Polyfill\\Intl\\Normalizer\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-intl-normalizer',
         ),
-        'Symfony\\Polyfill\\Intl\\Idn\\' => 
+        'Symfony\\Polyfill\\Intl\\Idn\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-intl-idn',
         ),
-        'Symfony\\Polyfill\\Intl\\Grapheme\\' => 
+        'Symfony\\Polyfill\\Intl\\Grapheme\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-intl-grapheme',
         ),
-        'Symfony\\Polyfill\\Ctype\\' => 
+        'Symfony\\Polyfill\\Ctype\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
         ),
-        'Symfony\\Contracts\\Translation\\' => 
+        'Symfony\\Contracts\\Translation\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/translation-contracts',
         ),
-        'Symfony\\Contracts\\Service\\' => 
+        'Symfony\\Contracts\\Service\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/service-contracts',
         ),
-        'Symfony\\Contracts\\EventDispatcher\\' => 
+        'Symfony\\Contracts\\EventDispatcher\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/event-dispatcher-contracts',
         ),
-        'Symfony\\Component\\Yaml\\' => 
+        'Symfony\\Component\\Yaml\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/yaml',
         ),
-        'Symfony\\Component\\VarDumper\\' => 
+        'Symfony\\Component\\VarDumper\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/var-dumper',
         ),
-        'Symfony\\Component\\Uid\\' => 
+        'Symfony\\Component\\Uid\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/uid',
         ),
-        'Symfony\\Component\\Translation\\' => 
+        'Symfony\\Component\\Translation\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/translation',
         ),
-        'Symfony\\Component\\String\\' => 
+        'Symfony\\Component\\String\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/string',
         ),
-        'Symfony\\Component\\Routing\\' => 
+        'Symfony\\Component\\Routing\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/routing',
         ),
-        'Symfony\\Component\\Process\\' => 
+        'Symfony\\Component\\Process\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/process',
         ),
-        'Symfony\\Component\\Mime\\' => 
+        'Symfony\\Component\\Mime\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/mime',
         ),
-        'Symfony\\Component\\Mailer\\' => 
+        'Symfony\\Component\\Mailer\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/mailer',
         ),
-        'Symfony\\Component\\HttpKernel\\' => 
+        'Symfony\\Component\\HttpKernel\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/http-kernel',
         ),
-        'Symfony\\Component\\HttpFoundation\\' => 
+        'Symfony\\Component\\HttpFoundation\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/http-foundation',
         ),
-        'Symfony\\Component\\Finder\\' => 
+        'Symfony\\Component\\Finder\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/finder',
         ),
-        'Symfony\\Component\\EventDispatcher\\' => 
+        'Symfony\\Component\\EventDispatcher\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/event-dispatcher',
         ),
-        'Symfony\\Component\\ErrorHandler\\' => 
+        'Symfony\\Component\\ErrorHandler\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/error-handler',
         ),
-        'Symfony\\Component\\CssSelector\\' => 
+        'Symfony\\Component\\CssSelector\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/css-selector',
         ),
-        'Symfony\\Component\\Console\\' => 
+        'Symfony\\Component\\Console\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/console',
         ),
-        'Symfony\\Component\\Clock\\' => 
+        'Symfony\\Component\\Clock\\' =>
         array (
             0 => __DIR__ . '/..' . '/symfony/clock',
         ),
-        'Ramsey\\Uuid\\' => 
+        'Stancl\\VirtualColumn\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/stancl/virtualcolumn/src',
+        ),
+        'Stancl\\Tenancy\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/stancl/tenancy/src',
+        ),
+        'Stancl\\JobPipeline\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/stancl/jobpipeline/src',
+        ),
+        'Ramsey\\Uuid\\' =>
         array (
             0 => __DIR__ . '/..' . '/ramsey/uuid/src',
         ),
-        'Ramsey\\Collection\\' => 
+        'Ramsey\\Collection\\' =>
         array (
             0 => __DIR__ . '/..' . '/ramsey/collection/src',
         ),
-        'Psy\\' => 
+        'Psy\\' =>
         array (
             0 => __DIR__ . '/..' . '/psy/psysh/src',
         ),
-        'Psr\\SimpleCache\\' => 
+        'Psr\\SimpleCache\\' =>
         array (
             0 => __DIR__ . '/..' . '/psr/simple-cache/src',
         ),
-        'Psr\\Log\\' => 
+        'Psr\\Log\\' =>
         array (
             0 => __DIR__ . '/..' . '/psr/log/src',
         ),
-        'Psr\\Http\\Message\\' => 
+        'Psr\\Http\\Message\\' =>
         array (
             0 => __DIR__ . '/..' . '/psr/http-factory/src',
             1 => __DIR__ . '/..' . '/psr/http-message/src',
         ),
-        'Psr\\Http\\Client\\' => 
+        'Psr\\Http\\Client\\' =>
         array (
             0 => __DIR__ . '/..' . '/psr/http-client/src',
         ),
-        'Psr\\EventDispatcher\\' => 
+        'Psr\\EventDispatcher\\' =>
         array (
             0 => __DIR__ . '/..' . '/psr/event-dispatcher/src',
         ),
-        'Psr\\Container\\' => 
+        'Psr\\Container\\' =>
         array (
             0 => __DIR__ . '/..' . '/psr/container/src',
         ),
-        'Psr\\Clock\\' => 
+        'Psr\\Clock\\' =>
         array (
             0 => __DIR__ . '/..' . '/psr/clock/src',
         ),
-        'PhpParser\\' => 
+        'PhpParser\\' =>
         array (
             0 => __DIR__ . '/..' . '/nikic/php-parser/lib/PhpParser',
         ),
-        'PhpOption\\' => 
+        'PhpOption\\' =>
         array (
             0 => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption',
         ),
-        'NunoMaduro\\Collision\\' => 
+        'NunoMaduro\\Collision\\' =>
         array (
             0 => __DIR__ . '/..' . '/nunomaduro/collision/src',
         ),
-        'Nette\\' => 
+        'Nette\\' =>
         array (
             0 => __DIR__ . '/..' . '/nette/schema/src',
             1 => __DIR__ . '/..' . '/nette/utils/src',
         ),
-        'Monolog\\' => 
+        'Monolog\\' =>
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
         ),
-        'Mockery\\' => 
+        'Mockery\\' =>
         array (
             0 => __DIR__ . '/..' . '/mockery/mockery/library/Mockery',
         ),
-        'League\\Uri\\' => 
+        'League\\Uri\\' =>
         array (
             0 => __DIR__ . '/..' . '/league/uri',
             1 => __DIR__ . '/..' . '/league/uri-interfaces',
         ),
-        'League\\MimeTypeDetection\\' => 
+        'League\\MimeTypeDetection\\' =>
         array (
             0 => __DIR__ . '/..' . '/league/mime-type-detection/src',
         ),
-        'League\\Flysystem\\Local\\' => 
+        'League\\Flysystem\\Local\\' =>
         array (
             0 => __DIR__ . '/..' . '/league/flysystem-local',
         ),
-        'League\\Flysystem\\' => 
+        'League\\Flysystem\\' =>
         array (
             0 => __DIR__ . '/..' . '/league/flysystem/src',
         ),
-        'League\\Config\\' => 
+        'League\\Config\\' =>
         array (
             0 => __DIR__ . '/..' . '/league/config/src',
         ),
-        'League\\CommonMark\\' => 
+        'League\\CommonMark\\' =>
         array (
             0 => __DIR__ . '/..' . '/league/commonmark/src',
         ),
-        'Laravel\\Tinker\\' => 
+        'Laravel\\Tinker\\' =>
         array (
             0 => __DIR__ . '/..' . '/laravel/tinker/src',
         ),
-        'Laravel\\SerializableClosure\\' => 
+        'Laravel\\SerializableClosure\\' =>
         array (
             0 => __DIR__ . '/..' . '/laravel/serializable-closure/src',
         ),
-        'Laravel\\Sail\\' => 
+        'Laravel\\Sail\\' =>
         array (
             0 => __DIR__ . '/..' . '/laravel/sail/src',
         ),
-        'Laravel\\Prompts\\' => 
+        'Laravel\\Prompts\\' =>
         array (
             0 => __DIR__ . '/..' . '/laravel/prompts/src',
         ),
-        'Laravel\\Pail\\' => 
+        'Laravel\\Pail\\' =>
         array (
             0 => __DIR__ . '/..' . '/laravel/pail/src',
         ),
-        'Illuminate\\Support\\' => 
+        'Illuminate\\Support\\' =>
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Macroable',
             1 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Collections',
             2 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Conditionable',
             3 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Reflection',
         ),
-        'Illuminate\\' => 
+        'Illuminate\\' =>
         array (
             0 => __DIR__ . '/..' . '/laravel/framework/src/Illuminate',
         ),
-        'GuzzleHttp\\UriTemplate\\' => 
+        'GuzzleHttp\\UriTemplate\\' =>
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/uri-template/src',
         ),
-        'GuzzleHttp\\Psr7\\' => 
+        'GuzzleHttp\\Psr7\\' =>
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
         ),
-        'GuzzleHttp\\Promise\\' => 
+        'GuzzleHttp\\Promise\\' =>
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/promises/src',
         ),
-        'GuzzleHttp\\' => 
+        'GuzzleHttp\\' =>
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/guzzle/src',
         ),
-        'GrahamCampbell\\ResultType\\' => 
+        'GrahamCampbell\\ResultType\\' =>
         array (
             0 => __DIR__ . '/..' . '/graham-campbell/result-type/src',
         ),
-        'Fruitcake\\Cors\\' => 
+        'Fruitcake\\Cors\\' =>
         array (
             0 => __DIR__ . '/..' . '/fruitcake/php-cors/src',
         ),
-        'Faker\\' => 
+        'Faker\\' =>
         array (
             0 => __DIR__ . '/..' . '/fakerphp/faker/src/Faker',
         ),
-        'Egulias\\EmailValidator\\' => 
+        'Facade\\IgnitionContracts\\' =>
+        array (
+            0 => __DIR__ . '/..' . '/facade/ignition-contracts/src',
+        ),
+        'Egulias\\EmailValidator\\' =>
         array (
             0 => __DIR__ . '/..' . '/egulias/email-validator/src',
         ),
-        'Dotenv\\' => 
+        'Dotenv\\' =>
         array (
             0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
         ),
-        'Doctrine\\Inflector\\' => 
+        'Doctrine\\Inflector\\' =>
         array (
             0 => __DIR__ . '/..' . '/doctrine/inflector/src',
         ),
-        'Doctrine\\Common\\Lexer\\' => 
+        'Doctrine\\Common\\Lexer\\' =>
         array (
             0 => __DIR__ . '/..' . '/doctrine/lexer/src',
         ),
-        'Dflydev\\DotAccessData\\' => 
+        'Dflydev\\DotAccessData\\' =>
         array (
             0 => __DIR__ . '/..' . '/dflydev/dot-access-data/src',
         ),
-        'DeepCopy\\' => 
+        'DeepCopy\\' =>
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
         ),
-        'Database\\Seeders\\' => 
+        'Database\\Seeders\\' =>
         array (
             0 => __DIR__ . '/../..' . '/database/seeders',
             1 => __DIR__ . '/..' . '/laravel/pint/database/seeders',
         ),
-        'Database\\Factories\\' => 
+        'Database\\Factories\\' =>
         array (
             0 => __DIR__ . '/../..' . '/database/factories',
             1 => __DIR__ . '/..' . '/laravel/pint/database/factories',
         ),
-        'Cron\\' => 
+        'Cron\\' =>
         array (
             0 => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron',
         ),
-        'Carbon\\Doctrine\\' => 
+        'Carbon\\Doctrine\\' =>
         array (
             0 => __DIR__ . '/..' . '/carbonphp/carbon-doctrine-types/src/Carbon/Doctrine',
         ),
-        'Carbon\\' => 
+        'Carbon\\' =>
         array (
             0 => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon',
         ),
-        'Brick\\Math\\' => 
+        'Brick\\Math\\' =>
         array (
             0 => __DIR__ . '/..' . '/brick/math/src',
         ),
-        'App\\' => 
+        'App\\' =>
         array (
             0 => __DIR__ . '/../..' . '/app',
             1 => __DIR__ . '/..' . '/laravel/pint/app',
@@ -531,7 +552,25 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
     );
 
     public static $classMap = array (
+        'App\\Console\\Commands\\SyncStorage' => __DIR__ . '/../..' . '/app/Console/Commands/SyncStorage.php',
+        'App\\Http\\Controllers\\Admin\\CalendarController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CalendarController.php',
+        'App\\Http\\Controllers\\Admin\\MapController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/MapController.php',
+        'App\\Http\\Controllers\\Admin\\MomentController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/MomentController.php',
+        'App\\Http\\Controllers\\Admin\\SettingsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/SettingsController.php',
+        'App\\Http\\Controllers\\Admin\\TimelineController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/TimelineController.php',
+        'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
+        'App\\Http\\Controllers\\GennaController' => __DIR__ . '/../..' . '/app/Http/Controllers/GennaController.php',
+        'App\\Http\\Controllers\\LandingController' => __DIR__ . '/../..' . '/app/Http/Controllers/LandingController.php',
+        'App\\Http\\Controllers\\NavItemController' => __DIR__ . '/../..' . '/app/Http/Controllers/NavItemController.php',
+        'App\\Http\\Controllers\\SuperAdmin\\AuthController' => __DIR__ . '/../..' . '/app/Http/Controllers/SuperAdmin/AuthController.php',
+        'App\\Http\\Controllers\\SuperAdmin\\DashboardController' => __DIR__ . '/../..' . '/app/Http/Controllers/SuperAdmin/DashboardController.php',
+        'App\\Http\\Middleware\\SuperAdminAuth' => __DIR__ . '/../..' . '/app/Http/Middleware/SuperAdminAuth.php',
+        'App\\Models\\Moment' => __DIR__ . '/../..' . '/app/Models/Moment.php',
+        'App\\Models\\MomentImage' => __DIR__ . '/../..' . '/app/Models/MomentImage.php',
+        'App\\Models\\NavItem' => __DIR__ . '/../..' . '/app/Models/NavItem.php',
+        'App\\Models\\Setting' => __DIR__ . '/../..' . '/app/Models/Setting.php',
+        'App\\Models\\SuperAdmin' => __DIR__ . '/../..' . '/app/Models/SuperAdmin.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
@@ -653,7 +692,11 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
         'Cron\\MinutesField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MinutesField.php',
         'Cron\\MonthField' => __DIR__ . '/..' . '/dragonmantank/cron-expression/src/Cron/MonthField.php',
         'Database\\Factories\\UserFactory' => __DIR__ . '/../..' . '/database/factories/UserFactory.php',
+        'Database\\Seeders\\AdminSeeder' => __DIR__ . '/../..' . '/database/seeders/AdminSeeder.php',
+        'Database\\Seeders\\CountdownDateSeeder' => __DIR__ . '/../..' . '/database/seeders/CountdownDateSeeder.php',
         'Database\\Seeders\\DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeders/DatabaseSeeder.php',
+        'Database\\Seeders\\NavItemSeeder' => __DIR__ . '/../..' . '/database/seeders/NavItemSeeder.php',
+        'Database\\Seeders\\SuperAdminSeeder' => __DIR__ . '/../..' . '/database/seeders/SuperAdminSeeder.php',
         'DateError' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateError.php',
         'DateException' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateException.php',
         'DateInvalidOperationException' => __DIR__ . '/..' . '/symfony/polyfill-php83/Resources/stubs/DateInvalidOperationException.php',
@@ -875,6 +918,12 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
         'Egulias\\EmailValidator\\Warning\\QuotedString' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/QuotedString.php',
         'Egulias\\EmailValidator\\Warning\\TLD' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/TLD.php',
         'Egulias\\EmailValidator\\Warning\\Warning' => __DIR__ . '/..' . '/egulias/email-validator/src/Warning/Warning.php',
+        'Facade\\IgnitionContracts\\BaseSolution' => __DIR__ . '/..' . '/facade/ignition-contracts/src/BaseSolution.php',
+        'Facade\\IgnitionContracts\\HasSolutionsForThrowable' => __DIR__ . '/..' . '/facade/ignition-contracts/src/HasSolutionsForThrowable.php',
+        'Facade\\IgnitionContracts\\ProvidesSolution' => __DIR__ . '/..' . '/facade/ignition-contracts/src/ProvidesSolution.php',
+        'Facade\\IgnitionContracts\\RunnableSolution' => __DIR__ . '/..' . '/facade/ignition-contracts/src/RunnableSolution.php',
+        'Facade\\IgnitionContracts\\Solution' => __DIR__ . '/..' . '/facade/ignition-contracts/src/Solution.php',
+        'Facade\\IgnitionContracts\\SolutionProviderRepository' => __DIR__ . '/..' . '/facade/ignition-contracts/src/SolutionProviderRepository.php',
         'Faker\\Calculator\\Ean' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Calculator/Ean.php',
         'Faker\\Calculator\\Iban' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Calculator/Iban.php',
         'Faker\\Calculator\\Inn' => __DIR__ . '/..' . '/fakerphp/faker/src/Faker/Calculator/Inn.php',
@@ -5709,6 +5758,162 @@ class ComposerStaticInitc514d8f7b9fc5970bdd94287905ef584
         'SebastianBergmann\\Type\\UnknownType' => __DIR__ . '/..' . '/sebastian/type/src/type/UnknownType.php',
         'SebastianBergmann\\Type\\VoidType' => __DIR__ . '/..' . '/sebastian/type/src/type/VoidType.php',
         'SebastianBergmann\\Version' => __DIR__ . '/..' . '/sebastian/version/src/Version.php',
+        'Stancl\\JobPipeline\\JobPipeline' => __DIR__ . '/..' . '/stancl/jobpipeline/src/JobPipeline.php',
+        'Stancl\\Tenancy\\Bootstrappers\\CacheTenancyBootstrapper' => __DIR__ . '/..' . '/stancl/tenancy/src/Bootstrappers/CacheTenancyBootstrapper.php',
+        'Stancl\\Tenancy\\Bootstrappers\\DatabaseTenancyBootstrapper' => __DIR__ . '/..' . '/stancl/tenancy/src/Bootstrappers/DatabaseTenancyBootstrapper.php',
+        'Stancl\\Tenancy\\Bootstrappers\\FilesystemTenancyBootstrapper' => __DIR__ . '/..' . '/stancl/tenancy/src/Bootstrappers/FilesystemTenancyBootstrapper.php',
+        'Stancl\\Tenancy\\Bootstrappers\\QueueTenancyBootstrapper' => __DIR__ . '/..' . '/stancl/tenancy/src/Bootstrappers/QueueTenancyBootstrapper.php',
+        'Stancl\\Tenancy\\Bootstrappers\\RedisTenancyBootstrapper' => __DIR__ . '/..' . '/stancl/tenancy/src/Bootstrappers/RedisTenancyBootstrapper.php',
+        'Stancl\\Tenancy\\CacheManager' => __DIR__ . '/..' . '/stancl/tenancy/src/CacheManager.php',
+        'Stancl\\Tenancy\\Commands\\Install' => __DIR__ . '/..' . '/stancl/tenancy/src/Commands/Install.php',
+        'Stancl\\Tenancy\\Commands\\Migrate' => __DIR__ . '/..' . '/stancl/tenancy/src/Commands/Migrate.php',
+        'Stancl\\Tenancy\\Commands\\MigrateFresh' => __DIR__ . '/..' . '/stancl/tenancy/src/Commands/MigrateFresh.php',
+        'Stancl\\Tenancy\\Commands\\Rollback' => __DIR__ . '/..' . '/stancl/tenancy/src/Commands/Rollback.php',
+        'Stancl\\Tenancy\\Commands\\Run' => __DIR__ . '/..' . '/stancl/tenancy/src/Commands/Run.php',
+        'Stancl\\Tenancy\\Commands\\Seed' => __DIR__ . '/..' . '/stancl/tenancy/src/Commands/Seed.php',
+        'Stancl\\Tenancy\\Commands\\TenantList' => __DIR__ . '/..' . '/stancl/tenancy/src/Commands/TenantList.php',
+        'Stancl\\Tenancy\\Concerns\\CreatesDatabaseUsers' => __DIR__ . '/..' . '/stancl/tenancy/src/Concerns/CreatesDatabaseUsers.php',
+        'Stancl\\Tenancy\\Concerns\\DealsWithMigrations' => __DIR__ . '/..' . '/stancl/tenancy/src/Concerns/DealsWithMigrations.php',
+        'Stancl\\Tenancy\\Concerns\\ExtendsLaravelCommand' => __DIR__ . '/..' . '/stancl/tenancy/src/Concerns/ExtendsLaravelCommand.php',
+        'Stancl\\Tenancy\\Concerns\\HasATenantArgument' => __DIR__ . '/..' . '/stancl/tenancy/src/Concerns/HasATenantArgument.php',
+        'Stancl\\Tenancy\\Concerns\\HasATenantsOption' => __DIR__ . '/..' . '/stancl/tenancy/src/Concerns/HasATenantsOption.php',
+        'Stancl\\Tenancy\\Concerns\\TenantAwareCommand' => __DIR__ . '/..' . '/stancl/tenancy/src/Concerns/TenantAwareCommand.php',
+        'Stancl\\Tenancy\\Contracts\\Domain' => __DIR__ . '/..' . '/stancl/tenancy/src/Contracts/Domain.php',
+        'Stancl\\Tenancy\\Contracts\\Feature' => __DIR__ . '/..' . '/stancl/tenancy/src/Contracts/Feature.php',
+        'Stancl\\Tenancy\\Contracts\\ManagesDatabaseUsers' => __DIR__ . '/..' . '/stancl/tenancy/src/Contracts/ManagesDatabaseUsers.php',
+        'Stancl\\Tenancy\\Contracts\\SyncMaster' => __DIR__ . '/..' . '/stancl/tenancy/src/Contracts/SyncMaster.php',
+        'Stancl\\Tenancy\\Contracts\\Syncable' => __DIR__ . '/..' . '/stancl/tenancy/src/Contracts/Syncable.php',
+        'Stancl\\Tenancy\\Contracts\\TenancyBootstrapper' => __DIR__ . '/..' . '/stancl/tenancy/src/Contracts/TenancyBootstrapper.php',
+        'Stancl\\Tenancy\\Contracts\\Tenant' => __DIR__ . '/..' . '/stancl/tenancy/src/Contracts/Tenant.php',
+        'Stancl\\Tenancy\\Contracts\\TenantCannotBeCreatedException' => __DIR__ . '/..' . '/stancl/tenancy/src/Contracts/TenantCannotBeCreatedException.php',
+        'Stancl\\Tenancy\\Contracts\\TenantCouldNotBeIdentifiedException' => __DIR__ . '/..' . '/stancl/tenancy/src/Contracts/TenantCouldNotBeIdentifiedException.php',
+        'Stancl\\Tenancy\\Contracts\\TenantDatabaseManager' => __DIR__ . '/..' . '/stancl/tenancy/src/Contracts/TenantDatabaseManager.php',
+        'Stancl\\Tenancy\\Contracts\\TenantResolver' => __DIR__ . '/..' . '/stancl/tenancy/src/Contracts/TenantResolver.php',
+        'Stancl\\Tenancy\\Contracts\\TenantWithDatabase' => __DIR__ . '/..' . '/stancl/tenancy/src/Contracts/TenantWithDatabase.php',
+        'Stancl\\Tenancy\\Contracts\\UniqueIdentifierGenerator' => __DIR__ . '/..' . '/stancl/tenancy/src/Contracts/UniqueIdentifierGenerator.php',
+        'Stancl\\Tenancy\\Controllers\\TenantAssetsController' => __DIR__ . '/..' . '/stancl/tenancy/src/Controllers/TenantAssetsController.php',
+        'Stancl\\Tenancy\\DatabaseConfig' => __DIR__ . '/..' . '/stancl/tenancy/src/DatabaseConfig.php',
+        'Stancl\\Tenancy\\Database\\Concerns\\BelongsToPrimaryModel' => __DIR__ . '/..' . '/stancl/tenancy/src/Database/Concerns/BelongsToPrimaryModel.php',
+        'Stancl\\Tenancy\\Database\\Concerns\\BelongsToTenant' => __DIR__ . '/..' . '/stancl/tenancy/src/Database/Concerns/BelongsToTenant.php',
+        'Stancl\\Tenancy\\Database\\Concerns\\CentralConnection' => __DIR__ . '/..' . '/stancl/tenancy/src/Database/Concerns/CentralConnection.php',
+        'Stancl\\Tenancy\\Database\\Concerns\\ConvertsDomainsToLowercase' => __DIR__ . '/..' . '/stancl/tenancy/src/Database/Concerns/ConvertsDomainsToLowercase.php',
+        'Stancl\\Tenancy\\Database\\Concerns\\EnsuresDomainIsNotOccupied' => __DIR__ . '/..' . '/stancl/tenancy/src/Database/Concerns/EnsuresDomainIsNotOccupied.php',
+        'Stancl\\Tenancy\\Database\\Concerns\\GeneratesIds' => __DIR__ . '/..' . '/stancl/tenancy/src/Database/Concerns/GeneratesIds.php',
+        'Stancl\\Tenancy\\Database\\Concerns\\HasDataColumn' => __DIR__ . '/..' . '/stancl/tenancy/src/Database/Concerns/HasDataColumn.php',
+        'Stancl\\Tenancy\\Database\\Concerns\\HasDatabase' => __DIR__ . '/..' . '/stancl/tenancy/src/Database/Concerns/HasDatabase.php',
+        'Stancl\\Tenancy\\Database\\Concerns\\HasDomains' => __DIR__ . '/..' . '/stancl/tenancy/src/Database/Concerns/HasDomains.php',
+        'Stancl\\Tenancy\\Database\\Concerns\\HasInternalKeys' => __DIR__ . '/..' . '/stancl/tenancy/src/Database/Concerns/HasInternalKeys.php',
+        'Stancl\\Tenancy\\Database\\Concerns\\HasScopedValidationRules' => __DIR__ . '/..' . '/stancl/tenancy/src/Database/Concerns/HasScopedValidationRules.php',
+        'Stancl\\Tenancy\\Database\\Concerns\\InvalidatesResolverCache' => __DIR__ . '/..' . '/stancl/tenancy/src/Database/Concerns/InvalidatesResolverCache.php',
+        'Stancl\\Tenancy\\Database\\Concerns\\InvalidatesTenantsResolverCache' => __DIR__ . '/..' . '/stancl/tenancy/src/Database/Concerns/InvalidatesTenantsResolverCache.php',
+        'Stancl\\Tenancy\\Database\\Concerns\\MaintenanceMode' => __DIR__ . '/..' . '/stancl/tenancy/src/Database/Concerns/MaintenanceMode.php',
+        'Stancl\\Tenancy\\Database\\Concerns\\PrimaryDomain' => __DIR__ . '/..' . '/stancl/tenancy/src/Database/Concerns/PrimaryDomain.php',
+        'Stancl\\Tenancy\\Database\\Concerns\\ResourceSyncing' => __DIR__ . '/..' . '/stancl/tenancy/src/Database/Concerns/ResourceSyncing.php',
+        'Stancl\\Tenancy\\Database\\Concerns\\TenantConnection' => __DIR__ . '/..' . '/stancl/tenancy/src/Database/Concerns/TenantConnection.php',
+        'Stancl\\Tenancy\\Database\\Concerns\\TenantRun' => __DIR__ . '/..' . '/stancl/tenancy/src/Database/Concerns/TenantRun.php',
+        'Stancl\\Tenancy\\Database\\DatabaseManager' => __DIR__ . '/..' . '/stancl/tenancy/src/Database/DatabaseManager.php',
+        'Stancl\\Tenancy\\Database\\Models\\Domain' => __DIR__ . '/..' . '/stancl/tenancy/src/Database/Models/Domain.php',
+        'Stancl\\Tenancy\\Database\\Models\\ImpersonationToken' => __DIR__ . '/..' . '/stancl/tenancy/src/Database/Models/ImpersonationToken.php',
+        'Stancl\\Tenancy\\Database\\Models\\Tenant' => __DIR__ . '/..' . '/stancl/tenancy/src/Database/Models/Tenant.php',
+        'Stancl\\Tenancy\\Database\\Models\\TenantPivot' => __DIR__ . '/..' . '/stancl/tenancy/src/Database/Models/TenantPivot.php',
+        'Stancl\\Tenancy\\Database\\ParentModelScope' => __DIR__ . '/..' . '/stancl/tenancy/src/Database/ParentModelScope.php',
+        'Stancl\\Tenancy\\Database\\TenantCollection' => __DIR__ . '/..' . '/stancl/tenancy/src/Database/TenantCollection.php',
+        'Stancl\\Tenancy\\Database\\TenantScope' => __DIR__ . '/..' . '/stancl/tenancy/src/Database/TenantScope.php',
+        'Stancl\\Tenancy\\Events\\BootstrappingTenancy' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/BootstrappingTenancy.php',
+        'Stancl\\Tenancy\\Events\\Contracts\\DomainEvent' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/Contracts/DomainEvent.php',
+        'Stancl\\Tenancy\\Events\\Contracts\\TenancyEvent' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/Contracts/TenancyEvent.php',
+        'Stancl\\Tenancy\\Events\\Contracts\\TenantEvent' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/Contracts/TenantEvent.php',
+        'Stancl\\Tenancy\\Events\\CreatingDatabase' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/CreatingDatabase.php',
+        'Stancl\\Tenancy\\Events\\CreatingDomain' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/CreatingDomain.php',
+        'Stancl\\Tenancy\\Events\\CreatingTenant' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/CreatingTenant.php',
+        'Stancl\\Tenancy\\Events\\DatabaseCreated' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/DatabaseCreated.php',
+        'Stancl\\Tenancy\\Events\\DatabaseDeleted' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/DatabaseDeleted.php',
+        'Stancl\\Tenancy\\Events\\DatabaseMigrated' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/DatabaseMigrated.php',
+        'Stancl\\Tenancy\\Events\\DatabaseRolledBack' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/DatabaseRolledBack.php',
+        'Stancl\\Tenancy\\Events\\DatabaseSeeded' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/DatabaseSeeded.php',
+        'Stancl\\Tenancy\\Events\\DeletingDatabase' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/DeletingDatabase.php',
+        'Stancl\\Tenancy\\Events\\DeletingDomain' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/DeletingDomain.php',
+        'Stancl\\Tenancy\\Events\\DeletingTenant' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/DeletingTenant.php',
+        'Stancl\\Tenancy\\Events\\DomainCreated' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/DomainCreated.php',
+        'Stancl\\Tenancy\\Events\\DomainDeleted' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/DomainDeleted.php',
+        'Stancl\\Tenancy\\Events\\DomainSaved' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/DomainSaved.php',
+        'Stancl\\Tenancy\\Events\\DomainUpdated' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/DomainUpdated.php',
+        'Stancl\\Tenancy\\Events\\EndingTenancy' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/EndingTenancy.php',
+        'Stancl\\Tenancy\\Events\\InitializingTenancy' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/InitializingTenancy.php',
+        'Stancl\\Tenancy\\Events\\MigratingDatabase' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/MigratingDatabase.php',
+        'Stancl\\Tenancy\\Events\\RevertedToCentralContext' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/RevertedToCentralContext.php',
+        'Stancl\\Tenancy\\Events\\RevertingToCentralContext' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/RevertingToCentralContext.php',
+        'Stancl\\Tenancy\\Events\\RollingBackDatabase' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/RollingBackDatabase.php',
+        'Stancl\\Tenancy\\Events\\SavedDomain' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/SavedDomain.php',
+        'Stancl\\Tenancy\\Events\\SavedTenant' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/SavedTenant.php',
+        'Stancl\\Tenancy\\Events\\SavingDomain' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/SavingDomain.php',
+        'Stancl\\Tenancy\\Events\\SavingTenant' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/SavingTenant.php',
+        'Stancl\\Tenancy\\Events\\SeedingDatabase' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/SeedingDatabase.php',
+        'Stancl\\Tenancy\\Events\\SyncedResourceChangedInForeignDatabase' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/SyncedResourceChangedInForeignDatabase.php',
+        'Stancl\\Tenancy\\Events\\SyncedResourceSaved' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/SyncedResourceSaved.php',
+        'Stancl\\Tenancy\\Events\\TenancyBootstrapped' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/TenancyBootstrapped.php',
+        'Stancl\\Tenancy\\Events\\TenancyEnded' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/TenancyEnded.php',
+        'Stancl\\Tenancy\\Events\\TenancyInitialized' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/TenancyInitialized.php',
+        'Stancl\\Tenancy\\Events\\TenantCreated' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/TenantCreated.php',
+        'Stancl\\Tenancy\\Events\\TenantDeleted' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/TenantDeleted.php',
+        'Stancl\\Tenancy\\Events\\TenantSaved' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/TenantSaved.php',
+        'Stancl\\Tenancy\\Events\\TenantUpdated' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/TenantUpdated.php',
+        'Stancl\\Tenancy\\Events\\UpdatingDomain' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/UpdatingDomain.php',
+        'Stancl\\Tenancy\\Events\\UpdatingTenant' => __DIR__ . '/..' . '/stancl/tenancy/src/Events/UpdatingTenant.php',
+        'Stancl\\Tenancy\\Exceptions\\DatabaseManagerNotRegisteredException' => __DIR__ . '/..' . '/stancl/tenancy/src/Exceptions/DatabaseManagerNotRegisteredException.php',
+        'Stancl\\Tenancy\\Exceptions\\DomainOccupiedByOtherTenantException' => __DIR__ . '/..' . '/stancl/tenancy/src/Exceptions/DomainOccupiedByOtherTenantException.php',
+        'Stancl\\Tenancy\\Exceptions\\ModelNotSyncMasterException' => __DIR__ . '/..' . '/stancl/tenancy/src/Exceptions/ModelNotSyncMasterException.php',
+        'Stancl\\Tenancy\\Exceptions\\NoConnectionSetException' => __DIR__ . '/..' . '/stancl/tenancy/src/Exceptions/NoConnectionSetException.php',
+        'Stancl\\Tenancy\\Exceptions\\NotASubdomainException' => __DIR__ . '/..' . '/stancl/tenancy/src/Exceptions/NotASubdomainException.php',
+        'Stancl\\Tenancy\\Exceptions\\RouteIsMissingTenantParameterException' => __DIR__ . '/..' . '/stancl/tenancy/src/Exceptions/RouteIsMissingTenantParameterException.php',
+        'Stancl\\Tenancy\\Exceptions\\TenancyNotInitializedException' => __DIR__ . '/..' . '/stancl/tenancy/src/Exceptions/TenancyNotInitializedException.php',
+        'Stancl\\Tenancy\\Exceptions\\TenantCouldNotBeIdentifiedById' => __DIR__ . '/..' . '/stancl/tenancy/src/Exceptions/TenantCouldNotBeIdentifiedById.php',
+        'Stancl\\Tenancy\\Exceptions\\TenantCouldNotBeIdentifiedByPathException' => __DIR__ . '/..' . '/stancl/tenancy/src/Exceptions/TenantCouldNotBeIdentifiedByPathException.php',
+        'Stancl\\Tenancy\\Exceptions\\TenantCouldNotBeIdentifiedByRequestDataException' => __DIR__ . '/..' . '/stancl/tenancy/src/Exceptions/TenantCouldNotBeIdentifiedByRequestDataException.php',
+        'Stancl\\Tenancy\\Exceptions\\TenantCouldNotBeIdentifiedOnDomainException' => __DIR__ . '/..' . '/stancl/tenancy/src/Exceptions/TenantCouldNotBeIdentifiedOnDomainException.php',
+        'Stancl\\Tenancy\\Exceptions\\TenantDatabaseAlreadyExistsException' => __DIR__ . '/..' . '/stancl/tenancy/src/Exceptions/TenantDatabaseAlreadyExistsException.php',
+        'Stancl\\Tenancy\\Exceptions\\TenantDatabaseDoesNotExistException' => __DIR__ . '/..' . '/stancl/tenancy/src/Exceptions/TenantDatabaseDoesNotExistException.php',
+        'Stancl\\Tenancy\\Exceptions\\TenantDatabaseUserAlreadyExistsException' => __DIR__ . '/..' . '/stancl/tenancy/src/Exceptions/TenantDatabaseUserAlreadyExistsException.php',
+        'Stancl\\Tenancy\\Facades\\GlobalCache' => __DIR__ . '/..' . '/stancl/tenancy/src/Facades/GlobalCache.php',
+        'Stancl\\Tenancy\\Facades\\Tenancy' => __DIR__ . '/..' . '/stancl/tenancy/src/Facades/Tenancy.php',
+        'Stancl\\Tenancy\\Features\\CrossDomainRedirect' => __DIR__ . '/..' . '/stancl/tenancy/src/Features/CrossDomainRedirect.php',
+        'Stancl\\Tenancy\\Features\\TelescopeTags' => __DIR__ . '/..' . '/stancl/tenancy/src/Features/TelescopeTags.php',
+        'Stancl\\Tenancy\\Features\\TenantConfig' => __DIR__ . '/..' . '/stancl/tenancy/src/Features/TenantConfig.php',
+        'Stancl\\Tenancy\\Features\\UniversalRoutes' => __DIR__ . '/..' . '/stancl/tenancy/src/Features/UniversalRoutes.php',
+        'Stancl\\Tenancy\\Features\\UserImpersonation' => __DIR__ . '/..' . '/stancl/tenancy/src/Features/UserImpersonation.php',
+        'Stancl\\Tenancy\\Features\\ViteBundler' => __DIR__ . '/..' . '/stancl/tenancy/src/Features/ViteBundler.php',
+        'Stancl\\Tenancy\\Jobs\\CreateDatabase' => __DIR__ . '/..' . '/stancl/tenancy/src/Jobs/CreateDatabase.php',
+        'Stancl\\Tenancy\\Jobs\\DeleteDatabase' => __DIR__ . '/..' . '/stancl/tenancy/src/Jobs/DeleteDatabase.php',
+        'Stancl\\Tenancy\\Jobs\\MigrateDatabase' => __DIR__ . '/..' . '/stancl/tenancy/src/Jobs/MigrateDatabase.php',
+        'Stancl\\Tenancy\\Jobs\\SeedDatabase' => __DIR__ . '/..' . '/stancl/tenancy/src/Jobs/SeedDatabase.php',
+        'Stancl\\Tenancy\\Listeners\\BootstrapTenancy' => __DIR__ . '/..' . '/stancl/tenancy/src/Listeners/BootstrapTenancy.php',
+        'Stancl\\Tenancy\\Listeners\\CreateTenantConnection' => __DIR__ . '/..' . '/stancl/tenancy/src/Listeners/CreateTenantConnection.php',
+        'Stancl\\Tenancy\\Listeners\\QueueableListener' => __DIR__ . '/..' . '/stancl/tenancy/src/Listeners/QueueableListener.php',
+        'Stancl\\Tenancy\\Listeners\\RevertToCentralContext' => __DIR__ . '/..' . '/stancl/tenancy/src/Listeners/RevertToCentralContext.php',
+        'Stancl\\Tenancy\\Listeners\\UpdateSyncedResource' => __DIR__ . '/..' . '/stancl/tenancy/src/Listeners/UpdateSyncedResource.php',
+        'Stancl\\Tenancy\\Middleware\\CheckTenantForMaintenanceMode' => __DIR__ . '/..' . '/stancl/tenancy/src/Middleware/CheckTenantForMaintenanceMode.php',
+        'Stancl\\Tenancy\\Middleware\\IdentificationMiddleware' => __DIR__ . '/..' . '/stancl/tenancy/src/Middleware/IdentificationMiddleware.php',
+        'Stancl\\Tenancy\\Middleware\\InitializeTenancyByDomain' => __DIR__ . '/..' . '/stancl/tenancy/src/Middleware/InitializeTenancyByDomain.php',
+        'Stancl\\Tenancy\\Middleware\\InitializeTenancyByDomainOrSubdomain' => __DIR__ . '/..' . '/stancl/tenancy/src/Middleware/InitializeTenancyByDomainOrSubdomain.php',
+        'Stancl\\Tenancy\\Middleware\\InitializeTenancyByPath' => __DIR__ . '/..' . '/stancl/tenancy/src/Middleware/InitializeTenancyByPath.php',
+        'Stancl\\Tenancy\\Middleware\\InitializeTenancyByRequestData' => __DIR__ . '/..' . '/stancl/tenancy/src/Middleware/InitializeTenancyByRequestData.php',
+        'Stancl\\Tenancy\\Middleware\\InitializeTenancyBySubdomain' => __DIR__ . '/..' . '/stancl/tenancy/src/Middleware/InitializeTenancyBySubdomain.php',
+        'Stancl\\Tenancy\\Middleware\\PreventAccessFromCentralDomains' => __DIR__ . '/..' . '/stancl/tenancy/src/Middleware/PreventAccessFromCentralDomains.php',
+        'Stancl\\Tenancy\\Middleware\\ScopeSessions' => __DIR__ . '/..' . '/stancl/tenancy/src/Middleware/ScopeSessions.php',
+        'Stancl\\Tenancy\\Resolvers\\Contracts\\CachedTenantResolver' => __DIR__ . '/..' . '/stancl/tenancy/src/Resolvers/Contracts/CachedTenantResolver.php',
+        'Stancl\\Tenancy\\Resolvers\\DomainTenantResolver' => __DIR__ . '/..' . '/stancl/tenancy/src/Resolvers/DomainTenantResolver.php',
+        'Stancl\\Tenancy\\Resolvers\\PathTenantResolver' => __DIR__ . '/..' . '/stancl/tenancy/src/Resolvers/PathTenantResolver.php',
+        'Stancl\\Tenancy\\Resolvers\\RequestDataTenantResolver' => __DIR__ . '/..' . '/stancl/tenancy/src/Resolvers/RequestDataTenantResolver.php',
+        'Stancl\\Tenancy\\Tenancy' => __DIR__ . '/..' . '/stancl/tenancy/src/Tenancy.php',
+        'Stancl\\Tenancy\\TenancyServiceProvider' => __DIR__ . '/..' . '/stancl/tenancy/src/TenancyServiceProvider.php',
+        'Stancl\\Tenancy\\TenantDatabaseManagers\\MySQLDatabaseManager' => __DIR__ . '/..' . '/stancl/tenancy/src/TenantDatabaseManagers/MySQLDatabaseManager.php',
+        'Stancl\\Tenancy\\TenantDatabaseManagers\\PermissionControlledMySQLDatabaseManager' => __DIR__ . '/..' . '/stancl/tenancy/src/TenantDatabaseManagers/PermissionControlledMySQLDatabaseManager.php',
+        'Stancl\\Tenancy\\TenantDatabaseManagers\\PostgreSQLDatabaseManager' => __DIR__ . '/..' . '/stancl/tenancy/src/TenantDatabaseManagers/PostgreSQLDatabaseManager.php',
+        'Stancl\\Tenancy\\TenantDatabaseManagers\\PostgreSQLSchemaManager' => __DIR__ . '/..' . '/stancl/tenancy/src/TenantDatabaseManagers/PostgreSQLSchemaManager.php',
+        'Stancl\\Tenancy\\TenantDatabaseManagers\\SQLiteDatabaseManager' => __DIR__ . '/..' . '/stancl/tenancy/src/TenantDatabaseManagers/SQLiteDatabaseManager.php',
+        'Stancl\\Tenancy\\UUIDGenerator' => __DIR__ . '/..' . '/stancl/tenancy/src/UUIDGenerator.php',
+        'Stancl\\Tenancy\\Vite' => __DIR__ . '/..' . '/stancl/tenancy/src/Vite.php',
+        'Stancl\\VirtualColumn\\VirtualColumn' => __DIR__ . '/..' . '/stancl/virtualcolumn/src/VirtualColumn.php',
         'Stringable' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Stringable.php',
         'Symfony\\Component\\Clock\\Clock' => __DIR__ . '/..' . '/symfony/clock/Clock.php',
         'Symfony\\Component\\Clock\\ClockAwareTrait' => __DIR__ . '/..' . '/symfony/clock/ClockAwareTrait.php',
