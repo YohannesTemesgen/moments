@@ -68,6 +68,12 @@
                     <span class="font-semibold">Dashboard</span>
                 </a>
 
+                <a href="{{ route('request.analytics') }}" 
+                    class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all {{ request()->routeIs('request.analytics') ? 'bg-violet-600 text-white shadow-lg shadow-violet-500/30' : 'text-slate-600 hover:bg-violet-50 hover:text-primary' }}">
+                    <span class="material-symbols-outlined {{ request()->routeIs('request.analytics') ? 'filled' : '' }}">analytics</span>
+                    <span class="font-semibold">Analytics</span>
+                </a>
+
                 <a href="{{ route('superadmin.users.index') }}" 
                     class="flex items-center gap-3 px-4 py-3 rounded-xl transition-all {{ request()->routeIs('superadmin.users.index') ? 'bg-violet-600 text-white shadow-lg shadow-violet-500/30' : 'text-slate-600 hover:bg-violet-50 hover:text-primary' }}">
                     <span class="material-symbols-outlined {{ request()->routeIs('superadmin.users.index') ? 'filled' : '' }}">group</span>
@@ -127,6 +133,10 @@
                     <a href="{{ route('superadmin.dashboard') }}" class="flex flex-col items-center justify-center gap-1 w-full h-full {{ request()->routeIs('superadmin.dashboard') ? 'text-primary' : 'text-slate-400 hover:text-slate-600' }} transition-colors">
                         <span class="material-symbols-outlined {{ request()->routeIs('superadmin.dashboard') ? 'filled' : '' }} text-[24px]">dashboard</span>
                         <span class="text-[10px] font-medium">Dashboard</span>
+                    </a>
+                    <a href="{{ route('request.analytics') }}" class="flex flex-col items-center justify-center gap-1 w-full h-full {{ request()->routeIs('request.analytics') ? 'text-primary' : 'text-slate-400 hover:text-slate-600' }} transition-colors">
+                        <span class="material-symbols-outlined {{ request()->routeIs('request.analytics') ? 'filled' : '' }} text-[24px]">analytics</span>
+                        <span class="text-[10px] font-medium">Analytics</span>
                     </a>
                     <a href="{{ route('superadmin.users.index') }}" class="flex flex-col items-center justify-center gap-1 w-full h-full {{ request()->routeIs('superadmin.users.*') ? 'text-primary' : 'text-slate-400 hover:text-slate-600' }} transition-colors">
                         <span class="material-symbols-outlined {{ request()->routeIs('superadmin.users.*') ? 'filled' : '' }} text-[24px]">group</span>

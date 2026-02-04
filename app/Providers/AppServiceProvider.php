@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Gate;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -19,6 +20,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        Gate::define('viewRequestAnalytics', function ($user = null) {
+            // Since we use superadmin.auth middleware, the user will be authenticated
+            // if they are a superadmin. We can also check the guard explicitly if needed.
+            return auth()->guard('superadmin')->check();
+        });
     }
 }

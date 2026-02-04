@@ -4,11 +4,15 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Moment creator Login</title>
-    <link href="https://fonts.googleapis.com" rel="preconnect">
-    <link crossorigin href="https://fonts.gstatic.com" rel="preconnect">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>SuperAdmin Login | Moments</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lexend:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
     <script>
         tailwind.config = {
@@ -16,75 +20,113 @@
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#7c3aed",
-                        "primary-dark": "#6d28d9",
-                        "background-dark": "#111921",
-                        "surface-dark": "#1c2126",
+                        "primary": "#7c3aed", // Purple for SuperAdmin
+                        "secondary": "#111827",
+                        "accent": "#f5f3ff",
                     },
-                    fontFamily: { "display": ["Inter", "sans-serif"] },
+                    fontFamily: {
+                        "sans": ["Inter", "sans-serif"],
+                        "display": ["Lexend", "sans-serif"]
+                    },
                 },
             },
         }
     </script>
+    
+    <style>
+        .hero-gradient {
+            background: radial-gradient(circle at top right, rgba(124, 58, 237, 0.05), transparent),
+                        radial-gradient(circle at bottom left, rgba(124, 58, 237, 0.05), transparent);
+        }
+    </style>
 </head>
-<body class="bg-gradient-to-br from-violet-50 via-white to-purple-50 font-display text-slate-900 min-h-screen flex items-center justify-center p-4">
+<body class="bg-white font-sans text-gray-900 min-h-screen flex items-center justify-center p-4 hero-gradient">
     <div class="w-full max-w-md">
-        <div class="text-center mb-8">
-            <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-violet-500 to-purple-600 rounded-3xl mb-4 shadow-xl shadow-violet-500/30">
-                <span class="material-symbols-outlined text-white text-4xl">shield_person</span>
+        <!-- Logo/Header -->
+        <div class="text-center mb-10">
+            <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-violet-500 to-purple-600 rounded-3xl mb-6 shadow-xl shadow-violet-500/30 group">
+                <span class="material-symbols-outlined text-white text-4xl group-hover:scale-110 transition-transform">shield_person</span>
             </div>
-            <h1 class="text-2xl font-bold bg-gradient-to-r from-violet-600 to-purple-600 bg-clip-text text-transparent">Moment creator</h1>
-            <p class="text-slate-500 mt-2 text-sm">Sign in to access the control panel</p>
+            <h1 class="text-2xl font-display font-bold text-secondary">System Control</h1>
+            <p class="text-gray-500 mt-2 text-sm">Sign in to access the administrator panel</p>
         </div>
         
-        <form method="POST" action="{{ route('superadmin.login.submit') }}" class="bg-white rounded-3xl p-8 shadow-2xl shadow-violet-500/10 border border-violet-100">
-            @csrf
-            
-            @if ($errors->any())
-            <div class="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl text-red-600 text-sm flex items-center gap-3">
-                <span class="material-symbols-outlined text-red-500">error</span>
-                <span>{{ $errors->first() }}</span>
-            </div>
-            @endif
-            
-            <div class="space-y-5">
-                <div>
-                    <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Email Address</label>
-                    <div class="relative">
-                        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">mail</span>
-                        <input type="email" name="email" value="{{ old('email') }}" required autofocus
-                            class="w-full pl-12 pr-4 py-3.5 rounded-xl border border-slate-200 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all text-sm"
-                            placeholder="admin@example.com">
+        <!-- Auth Card -->
+        <div class="bg-white rounded-[2rem] shadow-2xl shadow-violet-500/10 border border-violet-100 overflow-hidden">
+            <div class="p-8 sm:p-10">
+                <!-- Error Messages -->
+                @if ($errors->any())
+                <div class="mb-6 p-4 bg-red-50 border border-red-100 rounded-2xl text-red-600 text-sm font-medium flex items-center gap-3 animate-shake">
+                    <span class="material-symbols-outlined text-xl">error</span>
+                    <span>{{ $errors->first() }}</span>
+                </div>
+                @endif
+
+                <!-- Login Form -->
+                <form method="POST" action="{{ route('superadmin.login.submit') }}" class="space-y-6">
+                    @csrf
+                    <div class="space-y-5">
+                        <div>
+                            <label for="email" class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2 ml-1">Admin Email</label>
+                            <div class="relative group">
+                                <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-gray-400 group-focus-within:text-primary transition-colors">
+                                    <span class="material-symbols-outlined text-xl">mail</span>
+                                </span>
+                                <input type="email" id="email" name="email" value="{{ old('email') }}" required autofocus
+                                    class="w-full bg-gray-50 border-gray-100 rounded-2xl pl-12 pr-4 py-4 text-secondary placeholder:text-gray-400 focus:ring-4 focus:ring-primary/5 focus:border-primary focus:bg-white outline-none transition-all"
+                                    placeholder="admin@example.com">
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="password" class="block text-xs font-bold text-gray-400 uppercase tracking-widest mb-2 ml-1">Password</label>
+                            <div class="relative group">
+                                <span class="absolute inset-y-0 left-0 pl-4 flex items-center text-gray-400 group-focus-within:text-primary transition-colors">
+                                    <span class="material-symbols-outlined text-xl">lock</span>
+                                </span>
+                                <input type="password" id="password" name="password" required
+                                    class="w-full bg-gray-50 border-gray-100 rounded-2xl pl-12 pr-4 py-4 text-secondary placeholder:text-gray-400 focus:ring-4 focus:ring-primary/5 focus:border-primary focus:bg-white outline-none transition-all"
+                                    placeholder="••••••••">
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center justify-between px-1">
+                            <label class="flex items-center gap-3 cursor-pointer group">
+                                <div class="relative flex items-center">
+                                    <input type="checkbox" name="remember" class="peer h-5 w-5 cursor-pointer appearance-none rounded-md border border-gray-200 transition-all checked:bg-primary checked:border-primary focus:ring-0 focus:ring-offset-0">
+                                    <span class="material-symbols-outlined absolute text-white text-sm opacity-0 peer-checked:opacity-100 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none">check</span>
+                                </div>
+                                <span class="text-sm font-medium text-gray-500 group-hover:text-secondary transition-colors">Remember me</span>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-primary text-white font-bold py-4 rounded-2xl transition-all transform hover:scale-[1.02] hover:bg-violet-700 shadow-xl shadow-primary/20 flex items-center justify-center gap-2 group">
+                            <span>Sign In</span>
+                            <span class="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">login</span>
+                        </button>
                     </div>
-                </div>
-                
-                <div>
-                    <label class="block text-xs font-semibold text-slate-500 uppercase tracking-wider mb-2">Password</label>
-                    <div class="relative">
-                        <span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-xl">lock</span>
-                        <input type="password" name="password" required
-                            class="w-full pl-12 pr-4 py-3.5 rounded-xl border border-slate-200 focus:border-violet-500 focus:ring-2 focus:ring-violet-500/20 transition-all text-sm"
-                            placeholder="••••••••">
-                    </div>
-                </div>
-                
-                <div class="flex items-center justify-between">
-                    <label class="flex items-center gap-2 cursor-pointer">
-                        <input type="checkbox" name="remember" class="w-4 h-4 rounded border-slate-300 text-violet-600 focus:ring-violet-500">
-                        <span class="text-sm text-slate-600">Remember me</span>
-                    </label>
-                </div>
-                
-                <button type="submit" class="w-full py-3.5 px-4 bg-gradient-to-r from-violet-600 to-purple-600 text-white font-semibold rounded-xl hover:from-violet-700 hover:to-purple-700 transition-all shadow-lg shadow-violet-500/30 hover:shadow-violet-500/40 flex items-center justify-center gap-2">
-                    <span class="material-symbols-outlined text-xl">login</span>
-                    Sign In
-                </button>
+                </form>
             </div>
-        </form>
+        </div>
         
-        <p class="text-center text-xs text-slate-400 mt-6">
-            Protected area • Authorized personnel only
-        </p>
+        <!-- Footer Links -->
+        <div class="mt-10 text-center">
+            <p class="text-xs font-bold text-gray-400 uppercase tracking-widest flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined text-sm">verified_user</span>
+                Secure Administrator Portal
+            </p>
+        </div>
     </div>
+
+    <style>
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-4px); }
+            75% { transform: translateX(4px); }
+        }
+        .animate-shake {
+            animation: shake 0.4s ease-in-out;
+        }
+    </style>
 </body>
 </html>

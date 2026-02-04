@@ -41,6 +41,9 @@ Route::middleware([
     Route::post('/login', [LoginController::class, 'login']);
     Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
+    Route::get('/register', [LoginController::class, 'showRegisterForm'])->name('register');
+    Route::post('/register', [LoginController::class, 'register']);
+
     // Admin Routes (Protected)
     Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
         Route::get('/timeline', [TimelineController::class, 'index'])->name('timeline');

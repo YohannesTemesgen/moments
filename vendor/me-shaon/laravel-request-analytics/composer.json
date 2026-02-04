@@ -1,0 +1,74 @@
+{
+    "name": "me-shaon/laravel-request-analytics",
+    "description": "Simple request data analytics package for Laravel projects",
+    "keywords": [
+        "me-shaon",
+        "laravel",
+        "laravel-request-analytics"
+    ],
+    "homepage": "https://github.com/me-shaon/laravel-request-analytics",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ahmed shamim",
+            "email": "shaon.cse81@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.1 | ^8.2 | ^8.3",
+        "illuminate/contracts": "^10.0 | ^11.0 | ^12.0",
+        "spatie/laravel-package-tools": "^1.16.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.0",
+        "mockery/mockery": "^1.6",
+        "nunomaduro/collision": "^7.8 | ^8.1",
+        "orchestra/workbench": "^8.0 | ^9.0 | ^10.0",
+        "phpunit/phpunit": "^10.5 | ^11.0",
+        "rector/rector": "^2.1.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "MeShaon\\RequestAnalytics\\": "src/",
+            "MeShaon\\RequestAnalytics\\Database\\Factories\\": "database/factories/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "MeShaon\\RequestAnalytics\\Tests\\": "tests/",
+            "Workbench\\App\\": "workbench/app/"
+        }
+    },
+    "scripts": {
+        "post-autoload-dump": "@composer run prepare",
+        "clear": "@php vendor/bin/testbench package:purge-laravel-request-analytics --ansi",
+        "prepare": "@php vendor/bin/testbench package:discover --ansi",
+        "build": [
+            "@composer run prepare",
+            "@php vendor/bin/testbench workbench:build --ansi"
+        ],
+        "start": [
+            "Composer\\Config::disableProcessTimeout",
+            "@composer run build",
+            "@php vendor/bin/testbench serve"
+        ],
+        "refactor": "vendor/bin/rector process --dry-run",
+        "refactor-fix": "vendor/bin/rector process",
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage",
+        "format": "vendor/bin/pint"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "MeShaon\\RequestAnalytics\\RequestAnalyticsServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
