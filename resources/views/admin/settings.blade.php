@@ -109,9 +109,9 @@
                                     <span class="text-xs text-slate-500">Enable high-contrast dark theme</span>
                                 </div>
                             </div>
-                            <div class="relative inline-block w-14 mr-2 align-middle select-none">
-                                <input checked type="checkbox" id="toggle-dark" class="toggle-checkbox absolute block w-7 h-7 rounded-full bg-white border-4 border-slate-200 dark:border-slate-700 appearance-none cursor-pointer transition-all duration-300 translate-x-full">
-                                <label class="toggle-label block overflow-hidden h-7 rounded-full bg-primary cursor-pointer transition-colors duration-300" for="toggle-dark"></label>
+                            <div class="relative inline-block w-14 h-7 align-middle select-none transition duration-200 ease-in">
+                                <input type="checkbox" id="toggle-dark" class="peer absolute block w-7 h-7 rounded-full bg-white border-4 border-slate-200 dark:border-slate-700 appearance-none cursor-pointer transition-all duration-300 checked:translate-x-full checked:border-primary z-10" checked>
+                                <label for="toggle-dark" class="block overflow-hidden h-7 rounded-full bg-slate-200 dark:bg-slate-700 cursor-pointer transition-colors duration-300 peer-checked:bg-primary"></label>
                             </div>
                         </div>
                         
@@ -125,9 +125,9 @@
                                     <span class="text-xs text-slate-500">Allow app to access your GPS data</span>
                                 </div>
                             </div>
-                            <div class="relative inline-block w-14 mr-2 align-middle select-none">
-                                <input checked type="checkbox" id="toggle-location" class="toggle-checkbox absolute block w-7 h-7 rounded-full bg-white border-4 border-slate-200 dark:border-slate-700 appearance-none cursor-pointer transition-all duration-300 translate-x-full">
-                                <label class="toggle-label block overflow-hidden h-7 rounded-full bg-primary cursor-pointer transition-colors duration-300" for="toggle-location"></label>
+                            <div class="relative inline-block w-14 h-7 align-middle select-none transition duration-200 ease-in">
+                                <input type="checkbox" id="toggle-location" class="peer absolute block w-7 h-7 rounded-full bg-white border-4 border-slate-200 dark:border-slate-700 appearance-none cursor-pointer transition-all duration-300 checked:translate-x-full checked:border-primary z-10" checked>
+                                <label for="toggle-location" class="block overflow-hidden h-7 rounded-full bg-slate-200 dark:bg-slate-700 cursor-pointer transition-colors duration-300 peer-checked:bg-primary"></label>
                             </div>
                         </div>
                     </div>
@@ -242,5 +242,42 @@
 </div>
 
 
+
+@section('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const darkModeToggle = document.getElementById('toggle-dark');
+        const htmlElement = document.documentElement;
+
+        // Set initial state from localStorage or current class
+        const isDark = localStorage.getItem('theme') === 'dark' || 
+                      (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        
+        if (isDark) {
+            htmlElement.classList.add('dark');
+            htmlElement.classList.remove('light');
+            if (darkModeToggle) darkModeToggle.checked = true;
+        } else {
+            htmlElement.classList.remove('dark');
+            htmlElement.classList.add('light');
+            if (darkModeToggle) darkModeToggle.checked = false;
+        }
+
+        if (darkModeToggle) {
+            darkModeToggle.addEventListener('change', () => {
+                if (darkModeToggle.checked) {
+                    htmlElement.classList.add('dark');
+                    htmlElement.classList.remove('light');
+                    localStorage.setItem('theme', 'dark');
+                } else {
+                    htmlElement.classList.remove('dark');
+                    htmlElement.classList.add('light');
+                    localStorage.setItem('theme', 'light');
+                }
+            });
+        }
+    });
+</script>
+@endsection
 
 @endsection

@@ -82,7 +82,7 @@
                     <a href="#testimonials" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">Testimonials</a>
                     <a href="#pricing" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">Pricing</a>
                     <a href="#contact" class="text-sm font-medium text-gray-600 hover:text-primary transition-colors">Contact</a>
-                    <a href="/admin/login" class="px-5 py-2.5 bg-primary text-white rounded-full text-sm font-bold hover:bg-red-700 transition-all transform hover:scale-105 shadow-lg shadow-primary/20">Get Started</a>
+                    <a href="{{ route('login') }}" class="px-5 py-2.5 bg-primary text-white rounded-full text-sm font-bold hover:bg-red-700 transition-all transform hover:scale-105 shadow-lg shadow-primary/20">Get Started</a>
                 </div>
                 
                 <!-- Mobile Menu Button -->
@@ -100,7 +100,7 @@
                 <a href="#pricing" class="block px-3 py-4 text-base font-medium text-gray-600 border-b border-gray-50">Pricing</a>
                 <a href="#contact" class="block px-3 py-4 text-base font-medium text-gray-600">Contact</a>
                 <div class="pt-4 px-3">
-                    <a href="/admin/login" class="block w-full text-center px-5 py-3 bg-primary text-white rounded-xl text-base font-bold">Get Started</a>
+                    <a href="{{ route('login') }}" class="block w-full text-center px-5 py-3 bg-primary text-white rounded-xl text-base font-bold">Get Started</a>
                 </div>
             </div>
         </div>
@@ -118,7 +118,7 @@
                     The ultimate countdown and memory tracker for your life's most important events. Store memories, set goals, and celebrate milestones.
                 </p>
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
-                    <a href="/admin/login" class="w-full sm:w-auto px-8 py-4 bg-primary text-white rounded-full text-lg font-bold hover:bg-red-700 transition-all transform hover:scale-105 shadow-xl shadow-primary/30 flex items-center justify-center gap-2">
+                    <a href="{{ route('register') }}" class="w-full sm:w-auto px-8 py-4 bg-primary text-white rounded-full text-lg font-bold hover:bg-red-700 transition-all transform hover:scale-105 shadow-xl shadow-primary/30 flex items-center justify-center gap-2">
                         Start Your Journey <span class="material-symbols-outlined">arrow_forward</span>
                     </a>
                     <a href="#features" class="w-full sm:w-auto px-8 py-4 bg-white text-secondary border-2 border-gray-100 rounded-full text-lg font-bold hover:border-primary/20 transition-all flex items-center justify-center">
@@ -294,7 +294,7 @@
                             Web Access
                         </li>
                     </ul>
-                    <a href="/admin/login" class="w-full py-4 bg-white/10 text-white rounded-xl font-bold hover:bg-white/20 transition-all text-center">Get Started</a>
+                    <a href="{{ route('register') }}" class="w-full py-4 bg-white/10 text-white rounded-xl font-bold hover:bg-white/20 transition-all text-center">Get Started</a>
                 </div>
                 
                 <!-- Pro Plan -->
@@ -324,7 +324,7 @@
                             Priority Support
                         </li>
                     </ul>
-                    <a href="/admin/login" class="w-full py-4 bg-white text-primary rounded-xl font-bold hover:bg-gray-50 transition-all text-center">Go Pro</a>
+                    <a href="{{ route('register') }}" class="w-full py-4 bg-white text-primary rounded-xl font-bold hover:bg-gray-50 transition-all text-center">Go Pro</a>
                 </div>
                 
                 <!-- Enterprise Plan -->

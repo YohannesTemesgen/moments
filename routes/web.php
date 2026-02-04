@@ -20,6 +20,41 @@ Route::get('/landing', [LandingController::class, 'index'])->name('landing.origi
 // Genna Countdown Page
 Route::get('/genacountdown', [GennaController::class, 'index'])->name('genacountdown');
 
+// Auth Routes (Shadowing Tenant Routes for Central Domain)
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+Route::get('/register', [LoginController::class, 'showRegisterForm'])->name('register');
+Route::post('/register', [LoginController::class, 'register']);
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
+// Admin Routes (Accessible on Central Domain for local development)
+Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/timeline', [TimelineController::class, 'index'])->name('timeline');
+    Route::get('/calendar', [CalendarController::class, 'index'])->name('calendar');
+    Route::get('/map', [MapController::class, 'index'])->name('map');
+    Route::get('/settings', [SettingsController::class, 'index'])->name('settings');
+    Route::post('/settings/profile', [SettingsController::class, 'updateProfile'])->name('settings.profile');
+    Route::post('/settings/password', [SettingsController::class, 'updatePassword'])->name('settings.password');
+    Route::post('/settings/update', [SettingsController::class, 'updateSetting'])->name('settings.update');
+    
+    // Moment CRUD
+    Route::get('/moments/create', [MomentController::class, 'create'])->name('moments.create');
+    Route::post('/moments', [MomentController::class, 'store'])->name('moments.store');
+    Route::get('/moments/{moment}', [MomentController::class, 'show'])->name('moments.show');
+    Route::get('/moments/{moment}/edit', [MomentController::class, 'edit'])->name('moments.edit');
+    Route::put('/moments/{moment}', [MomentController::class, 'update'])->name('moments.update');
+    Route::delete('/moments/{moment}', [MomentController::class, 'destroy'])->name('moments.destroy');
+    Route::delete('/moments/image/{image}', [MomentController::class, 'deleteImage'])->name('moments.image.delete');
+    
+    // Navigation Management
+    Route::get('/navigation', [NavItemController::class, 'index'])->name('navigation');
+    Route::post('/navigation', [NavItemController::class, 'store'])->name('navigation.store');
+    Route::put('/navigation/{navItem}', [NavItemController::class, 'update'])->name('navigation.update');
+    Route::delete('/navigation/{navItem}', [NavItemController::class, 'destroy'])->name('navigation.destroy');
+    Route::patch('/navigation/{navItem}/visibility', [NavItemController::class, 'updateVisibility'])->name('navigation.visibility');
+    Route::post('/navigation/order', [NavItemController::class, 'updateOrder'])->name('navigation.order');
+});
+
 // SuperAdmin Routes
 use App\Http\Controllers\SuperAdmin\AuthController as SuperAdminAuthController;
 use App\Http\Controllers\SuperAdmin\DashboardController as SuperAdminDashboardController;

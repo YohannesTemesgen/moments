@@ -46,8 +46,6 @@
     <style>
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
-        .toggle-checkbox:checked { right: 0; border-color: #197fe6; }
-        .toggle-checkbox:checked + .toggle-label { background-color: #197fe6; }
         @keyframes pulse-ring {
             0% { transform: scale(0.8); opacity: 0.5; }
             100% { transform: scale(2); opacity: 0; }

@@ -14,12 +14,19 @@ class LoginController extends Controller
 {
     public function showLoginForm()
     {
-        return view('auth.login', ['type' => 'login']);
+        // For central domain access, we might not have a tenant
+        return view('auth.login', [
+            'type' => 'login',
+            'tenant' => tenant()
+        ]);
     }
 
     public function showRegisterForm()
     {
-        return view('auth.login', ['type' => 'register']);
+        return view('auth.login', [
+            'type' => 'register',
+            'tenant' => tenant()
+        ]);
     }
 
     public function login(Request $request)
@@ -56,7 +63,7 @@ class LoginController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'tenant_id' => tenant('id'),
+            'tenant_id' => tenant('id') ?? null, // Fallback for central domain
         ]);
 
         Auth::login($user);
