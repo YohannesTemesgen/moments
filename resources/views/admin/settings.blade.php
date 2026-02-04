@@ -152,6 +152,94 @@
                     </div>
                 </section>
 
+                @if(auth()->user()->isFullAdmin())
+                <!-- Team Management Section -->
+                <section>
+                    <div class="flex items-center justify-between mb-4 px-1">
+                        <h3 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em]">Team & Collaboration</h3>
+                        <button onclick="document.getElementById('add-user-modal').classList.remove('hidden')" class="text-[10px] font-bold text-primary uppercase tracking-widest hover:underline flex items-center gap-1">
+                            <span class="material-symbols-outlined text-[14px]">person_add</span>
+                            Add Member
+                        </button>
+                    </div>
+                    <div class="bg-white dark:bg-surface-dark rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse">
+                                <tbody class="divide-y divide-slate-100 dark:divide-slate-800">
+                                    @foreach($users as $teamMember)
+                                    <tr class="hover:bg-slate-50/50 dark:hover:bg-slate-800/30 transition-colors">
+                                        <td class="p-4 lg:p-6">
+                                            <div class="flex items-center gap-3">
+                                                <div class="size-9 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-sm">
+                                                    {{ substr($teamMember->name, 0, 1) }}
+                                                </div>
+                                                <div class="min-w-0">
+                                                    <div class="text-sm font-bold text-slate-900 dark:text-white truncate">{{ $teamMember->name }}</div>
+                                                    <div class="text-[10px] text-slate-500 truncate">{{ $teamMember->email }}</div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="p-4 lg:p-6">
+                                            <form action="{{ route('admin.users.role', $teamMember) }}" method="POST">
+                                                @csrf
+                                                @method('PATCH')
+                                                <select name="role" onchange="this.form.submit()" class="bg-slate-100 dark:bg-slate-800 border-none rounded-lg text-[10px] font-bold px-2 py-1 focus:ring-2 focus:ring-primary/50 cursor-pointer">
+                                                    <option value="view-only" {{ $teamMember->role === 'view-only' ? 'selected' : '' }}>View Only</option>
+                                                    <option value="create" {{ $teamMember->role === 'create' ? 'selected' : '' }}>Create Only</option>
+                                                    <option value="full" {{ $teamMember->role === 'full' ? 'selected' : '' }}>Full Access</option>
+                                                </select>
+                                            </form>
+                                        </td>
+                                        <td class="p-4 lg:p-6 text-right">
+                                            @if($teamMember->id !== auth()->id())
+                                            <form action="{{ route('admin.users.destroy', $teamMember) }}" method="POST" class="inline" onsubmit="return confirm('Remove this user?')">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="text-slate-400 hover:text-red-500 transition-colors">
+                                                    <span class="material-symbols-outlined text-[18px]">delete</span>
+                                                </button>
+                                            </form>
+                                            @endif
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                        @if($users->hasPages())
+                        <div class="p-3 border-t border-slate-100 dark:border-slate-800">
+                            {{ $users->links() }}
+                        </div>
+                        @endif
+                    </div>
+                </section>
+
+                <!-- Activity Logs Section -->
+                <section>
+                    <h3 class="text-xs font-bold text-slate-400 dark:text-slate-500 uppercase tracking-[0.2em] mb-4 px-1">Recent Activity</h3>
+                    <div class="bg-white dark:bg-surface-dark rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden divide-y divide-slate-100 dark:divide-slate-800">
+                        @forelse($auditLogs as $log)
+                        <div class="p-4 flex items-start gap-3">
+                            <div class="p-1.5 rounded-lg {{ $log->action === 'user_created' ? 'bg-blue-50 text-blue-600 dark:bg-blue-900/20 dark:text-blue-400' : ($log->action === 'permission_modified' ? 'bg-amber-50 text-amber-600 dark:bg-amber-900/20 dark:text-amber-400' : 'bg-red-50 text-red-600 dark:bg-red-900/20 dark:text-red-400') }}">
+                                <span class="material-symbols-outlined text-[16px]">
+                                    @if($log->action === 'user_created') person_add @elseif($log->action === 'permission_modified') rule @else delete_forever @endif
+                                </span>
+                            </div>
+                            <div class="flex-1 min-w-0">
+                                <p class="text-xs text-slate-900 dark:text-white leading-tight">
+                                    <span class="font-bold">{{ $log->user ? $log->user->name : 'System' }}</span>
+                                    {{ $log->description }}
+                                </p>
+                                <p class="text-[9px] font-bold text-slate-400 uppercase mt-1">{{ $log->created_at->diffForHumans() }}</p>
+                            </div>
+                        </div>
+                        @empty
+                        <div class="p-6 text-center text-slate-500 text-xs italic">No recent activity</div>
+                        @endforelse
+                    </div>
+                </section>
+                @endif
+
                 <div class="text-center pt-8 pb-8 lg:pt-0">
                     <p class="text-xs font-bold text-slate-400 uppercase tracking-widest">Version 1.0.0</p>
                     <form method="POST" action="{{ route('logout') }}" class="inline">
@@ -242,6 +330,71 @@
 </div>
 
 
+
+@if(auth()->user()->isFullAdmin())
+<!-- Add User Modal -->
+<div id="add-user-modal" class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-surface-dark rounded-2xl w-full max-w-md shadow-xl overflow-hidden animate-in fade-in zoom-in duration-200">
+        <div class="p-4 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center bg-slate-50/50 dark:bg-slate-800/50">
+            <div class="flex items-center gap-3">
+                <div class="size-8 bg-primary rounded-lg flex items-center justify-center text-white">
+                    <span class="material-symbols-outlined text-[20px]">person_add</span>
+                </div>
+                <h3 class="font-bold text-lg">Add New Team Member</h3>
+            </div>
+            <button onclick="document.getElementById('add-user-modal').classList.add('hidden')" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <form method="POST" action="{{ route('admin.users.store') }}" class="p-6 space-y-5">
+            @csrf
+            <div>
+                <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2 ml-1">Full Name</label>
+                <input type="text" name="name" required class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all" placeholder="Enter user's name">
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2 ml-1">Email Address</label>
+                <input type="email" name="email" required class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all" placeholder="user@example.com">
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2 ml-1">Temporary Password</label>
+                <input type="password" name="password" required class="w-full bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-primary/50 focus:border-primary outline-none transition-all" placeholder="Minimum 8 characters">
+            </div>
+            <div>
+                <label class="block text-xs font-bold text-slate-500 uppercase tracking-widest mb-2 ml-1">Permissions</label>
+                <div class="grid grid-cols-1 gap-2">
+                    <label class="relative flex items-center p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/50 cursor-pointer transition-all group">
+                        <input type="radio" name="role" value="view-only" checked class="peer sr-only">
+                        <div class="size-4 rounded-full border-2 border-slate-300 dark:border-slate-600 peer-checked:border-primary peer-checked:border-[5px] transition-all"></div>
+                        <div class="ml-3">
+                            <div class="text-xs font-bold text-slate-900 dark:text-white">View Only</div>
+                        </div>
+                    </label>
+                    <label class="relative flex items-center p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/50 cursor-pointer transition-all group">
+                        <input type="radio" name="role" value="create" class="peer sr-only">
+                        <div class="size-4 rounded-full border-2 border-slate-300 dark:border-slate-600 peer-checked:border-primary peer-checked:border-[5px] transition-all"></div>
+                        <div class="ml-3">
+                            <div class="text-xs font-bold text-slate-900 dark:text-white">Create Permissions</div>
+                        </div>
+                    </label>
+                    <label class="relative flex items-center p-2.5 rounded-xl border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800/50 cursor-pointer transition-all group">
+                        <input type="radio" name="role" value="full" class="peer sr-only">
+                        <div class="size-4 rounded-full border-2 border-slate-300 dark:border-slate-600 peer-checked:border-primary peer-checked:border-[5px] transition-all"></div>
+                        <div class="ml-3">
+                            <div class="text-xs font-bold text-slate-900 dark:text-white">Full Access</div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="pt-2 flex gap-3">
+                <button type="button" onclick="document.getElementById('add-user-modal').classList.add('hidden')" class="flex-1 px-4 py-3 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-bold rounded-xl hover:bg-slate-200 dark:hover:bg-slate-700 transition-all text-sm">Cancel</button>
+                <button type="submit" class="flex-1 px-4 py-3 bg-primary text-white font-bold rounded-xl hover:bg-blue-600 transition-all shadow-lg shadow-primary/20 text-sm">Create</button>
+            </div>
+        </form>
+    </div>
+</div>
+@endif
 
 @section('scripts')
 <script>

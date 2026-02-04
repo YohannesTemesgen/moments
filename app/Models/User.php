@@ -23,7 +23,27 @@ class User extends Authenticatable
         'email',
         'password',
         'tenant_id',
+        'role',
     ];
+
+    const ROLE_VIEW_ONLY = 'view-only';
+    const ROLE_CREATE = 'create';
+    const ROLE_FULL = 'full';
+
+    public function isFullAdmin()
+    {
+        return $this->role === self::ROLE_FULL;
+    }
+
+    public function canCreate()
+    {
+        return in_array($this->role, [self::ROLE_CREATE, self::ROLE_FULL]);
+    }
+
+    public function isViewOnly()
+    {
+        return $this->role === self::ROLE_VIEW_ONLY;
+    }
 
     /**
      * The attributes that should be hidden for serialization.

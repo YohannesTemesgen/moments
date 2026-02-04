@@ -13,7 +13,22 @@ class SettingsController extends Controller
     public function index()
     {
         $user = Auth::user();
-        return view('admin.settings', compact('user'));
+        
+        // Only show users belonging to the current tenant, excluding the current user
+        // Also exclude the default admin user to keep the list clean for tenants
+        $users = \App\Models\User::where('tenant_id', tenant('id'))
+            ->where('id', '!=', $user->id)
+            ->where('email', '!=', 'admin@example.com')
+            ->latest()
+            ->paginate(5);
+            
+        $auditLogs = \App\Models\AuditLog::with('user')
+            ->where('tenant_id', tenant('id'))
+            ->latest()
+            ->take(10)
+            ->get();
+            
+        return view('admin.settings', compact('user', 'users', 'auditLogs'));
     }
 
     public function updateProfile(Request $request)

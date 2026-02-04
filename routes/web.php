@@ -37,6 +37,13 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::post('/settings/password', [SettingsController::class, 'updatePassword'])->name('settings.password');
     Route::post('/settings/update', [SettingsController::class, 'updateSetting'])->name('settings.update');
     
+    // User Management (Integrated in Settings)
+    Route::middleware(['permission:full'])->group(function () {
+        Route::post('/users', [\App\Http\Controllers\Admin\UserController::class, 'store'])->name('users.store');
+        Route::patch('/users/{user}/role', [\App\Http\Controllers\Admin\UserController::class, 'updateRole'])->name('users.role');
+        Route::delete('/users/{user}', [\App\Http\Controllers\Admin\UserController::class, 'destroy'])->name('users.destroy');
+    });
+    
     // Moment CRUD
     Route::get('/moments/create', [MomentController::class, 'create'])->name('moments.create');
     Route::post('/moments', [MomentController::class, 'store'])->name('moments.store');
