@@ -42,6 +42,7 @@
             },
         }
     </script>
+@section('styles')
     <style>
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
@@ -62,11 +63,73 @@
             animation: pulse-ring 2s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
         }
         .material-symbols-outlined.filled { font-variation-settings: 'FILL' 1; }
+        
+        /* Desktop Sidebar Styles */
+        @media (min-width: 1024px) {
+            .sidebar-item-active {
+                background-color: rgba(25, 127, 230, 0.1);
+                color: #197fe6;
+                border-right: 3px solid #197fe6;
+            }
+        }
     </style>
     @yield('styles')
 </head>
-<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white overflow-hidden h-screen w-full flex flex-col">
-    @yield('content')
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-white overflow-hidden h-screen w-full flex lg:flex-row flex-col">
+    <!-- Desktop Sidebar -->
+    <aside class="hidden lg:flex flex-col w-64 h-full bg-white dark:bg-surface-dark border-r border-slate-200 dark:border-slate-800 shrink-0">
+        <div class="p-6">
+            <div class="flex items-center gap-3 mb-8">
+                <div class="size-10 bg-primary rounded-xl flex items-center justify-center text-white shadow-lg shadow-primary/30">
+                    <span class="material-symbols-outlined text-2xl">auto_awesome_motion</span>
+                </div>
+                <div>
+                    <h2 class="font-bold text-lg tracking-tight">Moments</h2>
+                    <p class="text-[10px] text-slate-500 uppercase tracking-widest font-semibold">Admin Panel</p>
+                </div>
+            </div>
+
+            <nav class="space-y-1">
+                <a href="{{ route('admin.timeline') }}" class="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all {{ request()->routeIs('admin.timeline') ? 'sidebar-item-active' : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800' }}">
+                    <span class="material-symbols-outlined {{ request()->routeIs('admin.timeline') ? 'filled' : '' }}">view_timeline</span>
+                    Timeline
+                </a>
+                <a href="{{ route('admin.calendar') }}" class="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all {{ request()->routeIs('admin.calendar') ? 'sidebar-item-active' : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800' }}">
+                    <span class="material-symbols-outlined {{ request()->routeIs('admin.calendar') ? 'filled' : '' }}">calendar_month</span>
+                    Calendar
+                </a>
+                <a href="{{ route('admin.map') }}" class="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all {{ request()->routeIs('admin.map') ? 'sidebar-item-active' : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800' }}">
+                    <span class="material-symbols-outlined {{ request()->routeIs('admin.map') ? 'filled' : '' }}">map</span>
+                    Map
+                </a>
+                <a href="{{ route('admin.settings') }}" class="flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all {{ request()->routeIs('admin.settings') ? 'sidebar-item-active' : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800' }}">
+                    <span class="material-symbols-outlined {{ request()->routeIs('admin.settings') ? 'filled' : '' }}">settings</span>
+                    Settings
+                </a>
+            </nav>
+        </div>
+
+        <div class="mt-auto p-6 border-t border-slate-100 dark:border-slate-800">
+            <div class="flex items-center gap-3 mb-6">
+                <div class="size-10 rounded-full bg-cover bg-center ring-2 ring-primary/10" style='background-image: url("https://ui-avatars.com/api/?name={{ urlencode(auth()->user()->name) }}&background=197fe6&color=fff");'></div>
+                <div class="min-w-0">
+                    <p class="text-sm font-bold truncate">{{ auth()->user()->name }}</p>
+                    <p class="text-[10px] text-slate-500 truncate">{{ auth()->user()->email }}</p>
+                </div>
+            </div>
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button type="submit" class="w-full flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium text-red-500 hover:bg-red-50 dark:hover:bg-red-900/10 transition-all">
+                    <span class="material-symbols-outlined text-[20px]">logout</span>
+                    Logout
+                </button>
+            </form>
+        </div>
+    </aside>
+
+    <div class="flex-1 flex flex-col h-full overflow-hidden relative">
+        @yield('content')
+    </div>
     
     <!-- PWA Update Available Popup -->
     <div id="pwa-update-prompt" class="fixed top-4 left-4 right-4 md:left-auto md:right-4 md:w-96 bg-white dark:bg-surface-dark rounded-xl shadow-2xl p-4 z-[100] hidden transform transition-all duration-300 border border-slate-200 dark:border-slate-700">
@@ -94,7 +157,7 @@
     </div>
 
     <!-- Bottom Navigation -->
-    <nav class="fixed bottom-0 w-full z-40 bg-white/90 dark:bg-surface-dark/90 backdrop-blur-lg border-t border-slate-200 dark:border-slate-800 pb-safe">
+    <nav class="lg:hidden fixed bottom-0 w-full z-40 bg-white/90 dark:bg-surface-dark/90 backdrop-blur-lg border-t border-slate-200 dark:border-slate-800 pb-safe">
         <div class="flex items-center justify-around h-16 max-w-md mx-auto">
             <a href="{{ route('admin.timeline') }}" class="flex flex-col items-center justify-center gap-1 w-full h-full {{ request()->routeIs('admin.timeline') ? 'text-primary' : 'text-slate-400 hover:text-slate-600 dark:hover:text-slate-200' }} transition-colors">
                 <span class="material-symbols-outlined {{ request()->routeIs('admin.timeline') ? 'filled' : '' }} text-[24px]">view_timeline</span>

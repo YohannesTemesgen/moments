@@ -4,27 +4,30 @@
 
 @section('content')
 <header class="absolute top-0 left-0 right-0 z-30 pt-safe transition-colors duration-300 pointer-events-none">
-    <div class="bg-gradient-to-b from-white/90 via-white/50 to-transparent dark:from-black/80 dark:via-black/40 dark:to-transparent pb-6 pt-3 px-4 flex items-center justify-between pointer-events-auto">
+    <div class="bg-gradient-to-b from-white/90 via-white/50 to-transparent dark:from-black/80 dark:via-black/40 dark:to-transparent pb-6 pt-3 px-4 lg:px-8 flex items-center justify-between pointer-events-auto">
         <div class="flex items-center gap-3">
-            <div class="relative group cursor-pointer shadow-sm">
+            <div class="lg:hidden relative group cursor-pointer shadow-sm">
                 <div class="aspect-square rounded-full size-10 ring-2 ring-white dark:ring-slate-700 shadow-md overflow-hidden img-loading-container">
                     <img src="https://ui-avatars.com/api/?name={{ urlencode(auth()->user()->name) }}&background=197fe6&color=fff" class="w-full h-full object-cover img-loading" onload="onImageLoad(this)">
                 </div>
             </div>
-            <h1 class="text-xl font-bold tracking-tight drop-shadow-sm text-slate-900 dark:text-white">Map View</h1>
+            <div>
+                <h1 class="text-xl lg:text-2xl font-bold tracking-tight drop-shadow-sm text-slate-900 dark:text-white">Map View</h1>
+                <p class="hidden lg:block text-xs font-medium text-slate-500 dark:text-slate-400">Explore your moments geographically</p>
+            </div>
         </div>
         <div class="flex gap-2">
-            <button class="flex items-center justify-center size-10 rounded-full bg-white/80 dark:bg-surface-dark/80 backdrop-blur-md shadow-sm border border-slate-200 dark:border-slate-700 hover:bg-white dark:hover:bg-surface-dark transition-colors text-slate-600 dark:text-slate-300">
-                <span class="material-symbols-outlined">filter_list</span>
+            <button class="flex items-center justify-center size-10 lg:size-12 rounded-full lg:rounded-2xl bg-white/80 dark:bg-surface-dark/80 backdrop-blur-md shadow-sm border border-slate-200 dark:border-slate-700 hover:bg-white dark:hover:bg-surface-dark transition-all text-slate-600 dark:text-slate-300 hover:scale-105">
+                <span class="material-symbols-outlined lg:text-3xl">filter_list</span>
             </button>
-            <button class="flex items-center justify-center size-10 rounded-full bg-white/80 dark:bg-surface-dark/80 backdrop-blur-md shadow-sm border border-slate-200 dark:border-slate-700 hover:bg-white dark:hover:bg-surface-dark transition-colors text-slate-600 dark:text-slate-300">
-                <span class="material-symbols-outlined">search</span>
+            <button class="flex items-center justify-center size-10 lg:size-12 rounded-full lg:rounded-2xl bg-white/80 dark:bg-surface-dark/80 backdrop-blur-md shadow-sm border border-slate-200 dark:border-slate-700 hover:bg-white dark:hover:bg-surface-dark transition-all text-slate-600 dark:text-slate-300 hover:scale-105">
+                <span class="material-symbols-outlined lg:text-3xl">search</span>
             </button>
         </div>
     </div>
 </header>
 
-<main class="flex-1 relative w-full h-full bg-slate-200 dark:bg-slate-800 overflow-hidden">
+<main class="flex-1 relative w-full h-full bg-slate-200 dark:bg-slate-800 overflow-hidden flex">
     <!-- Map Background -->
     <div class="absolute inset-0 w-full h-full z-0">
         <div id="map" class="w-full h-full"></div>
@@ -34,20 +37,71 @@
     @if($moments->count() == 0)
     <!-- Empty State -->
     <div class="absolute inset-0 flex items-center justify-center z-10">
-        <div class="text-center px-4">
-            <div class="w-20 h-20 bg-white/80 dark:bg-surface-dark/80 backdrop-blur rounded-full flex items-center justify-center mx-auto mb-4">
+        <div class="text-center px-4 bg-white/50 dark:bg-black/20 backdrop-blur-sm p-8 rounded-3xl">
+            <div class="w-20 h-20 bg-white/80 dark:bg-surface-dark/80 backdrop-blur rounded-full flex items-center justify-center mx-auto mb-4 shadow-xl">
                 <span class="material-symbols-outlined text-4xl text-slate-400">location_off</span>
             </div>
-            <h3 class="text-lg font-semibold text-slate-700 dark:text-slate-300">No locations yet</h3>
-            <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Add moments with locations to see them on the map.</p>
+            <h3 class="text-lg font-bold text-slate-700 dark:text-white">No locations yet</h3>
+            <p class="text-sm text-slate-500 dark:text-slate-400 mt-1 max-w-[200px] mx-auto">Add moments with locations to see them on the map.</p>
         </div>
     </div>
     @endif
 
-    <!-- Bottom Card Slider -->
+    <!-- Desktop Side Panel -->
+    <div class="hidden lg:flex flex-col w-96 h-full relative z-30 bg-white/80 dark:bg-surface-dark/80 backdrop-blur-xl border-r border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden pointer-events-auto">
+        <div class="p-6 border-b border-slate-200 dark:border-slate-800">
+            <h2 class="text-xl font-bold mb-1">Moments List</h2>
+            <p class="text-xs text-slate-500">{{ $moments->count() }} locations found</p>
+        </div>
+        <div class="flex-1 overflow-y-auto no-scrollbar p-4 space-y-4">
+            @foreach($moments as $index => $moment)
+            <div class="moment-card-desktop cursor-pointer bg-white dark:bg-surface-dark-highlight rounded-2xl p-4 shadow-sm border border-slate-100 dark:border-slate-700/50 transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 group {{ $index == 0 ? 'ring-2 ring-primary border-transparent' : '' }}" 
+                 data-index="{{ $index }}"
+                 onclick="showMoment({{ $index }})">
+                <div class="flex gap-4 mb-3">
+                    <div class="shrink-0 size-20 rounded-xl overflow-hidden bg-slate-200 dark:bg-slate-800 relative">
+                        <img src="{{ $moment->images->count() > 0 ? $moment->images->first()->url : asset('images/placeholder.jpg') }}" class="w-full h-full object-cover transition-transform group-hover:scale-110" onerror="this.src='{{ asset('images/placeholder.jpg') }}'">
+                        @if($moment->images->count() > 1)
+                        <div class="absolute bottom-1 right-1 bg-black/60 text-white text-[10px] px-1.5 py-0.5 rounded-md font-bold backdrop-blur-sm">
+                            +{{ $moment->images->count() - 1 }}
+                        </div>
+                        @endif
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="flex justify-between items-start mb-1">
+                            <h3 class="text-sm font-bold text-slate-900 dark:text-white truncate group-hover:text-primary transition-colors">{{ $moment->title }}</h3>
+                        </div>
+                        <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2 mb-2">{{ $moment->description }}</p>
+                        <div class="flex items-center gap-2 text-[10px] font-bold">
+                            @php
+                                $catSlug = Str::slug($moment->category ?? 'general');
+                                $catColorClass = $categoryColors[$catSlug] ?? 'text-slate-600 bg-slate-500/10 dark:text-slate-400';
+                            @endphp
+                            <span class="px-2 py-0.5 rounded {{ $catColorClass }} uppercase tracking-wider">
+                                {{ $moment->category ?? 'General' }}
+                            </span>
+                            <span class="text-slate-400">{{ $moment->created_at->diffForHumans() }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex items-center justify-between pt-3 border-t border-slate-50 dark:border-slate-800/50">
+                    <div class="flex items-center gap-1.5 text-[10px] text-slate-400 truncate max-w-[200px]">
+                        <span class="material-symbols-outlined text-[14px] text-primary">location_on</span>
+                        <span class="truncate">{{ $moment->location }}</span>
+                    </div>
+                    <a href="{{ route('admin.moments.show', $moment) }}" class="size-8 rounded-lg bg-slate-50 dark:bg-slate-800 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition-all">
+                        <span class="material-symbols-outlined text-[18px]">open_in_new</span>
+                    </a>
+                </div>
+            </div>
+            @endforeach
+        </div>
+    </div>
+
+    <!-- Mobile Bottom Card Slider -->
     @if($moments->count() > 0)
-    <div class="absolute bottom-4 left-0 right-0 z-30 pb-8">
-        <div class="px-4">
+    <div class="lg:hidden absolute bottom-4 left-0 right-0 z-30 pb-8 pointer-events-none">
+        <div class="px-4 pointer-events-auto">
             <div id="cards-container" class="flex gap-3 overflow-x-auto scrollbar-hide pb-2 snap-x snap-mandatory">
                 @foreach($moments as $index => $moment)
                 <div class="moment-card shrink-0 w-80 bg-white dark:bg-surface-dark rounded-2xl p-3 shadow-xl border border-slate-100 dark:border-slate-800/50 flex gap-3 snap-center transition-all duration-300 {{ $index == 0 ? 'ring-2 ring-primary/30' : '' }}" data-index="{{ $index }}">
@@ -271,7 +325,19 @@
         const moment = moments[index];
         const catColor = getCategoryColor(moment.category);
         
-        // Update card highlights
+        // Update desktop card highlights
+        document.querySelectorAll('.moment-card-desktop').forEach((card, i) => {
+            if (i === index) {
+                card.classList.add('ring-2', 'ring-primary', 'border-transparent');
+                card.classList.remove('border-slate-100', 'dark:border-slate-700/50');
+                card.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            } else {
+                card.classList.remove('ring-2', 'ring-primary', 'border-transparent');
+                card.classList.add('border-slate-100', 'dark:border-slate-700/50');
+            }
+        });
+
+        // Update mobile card highlights
         document.querySelectorAll('.moment-card').forEach((card, i) => {
             if (i === index) {
                 card.classList.add('ring-2');
@@ -284,15 +350,14 @@
             }
         });
         
-        // Scroll to the selected card
+        // Scroll to the selected mobile card
         const cardsContainer = document.getElementById('cards-container');
         const targetCard = document.querySelector(`.moment-card[data-index="${index}"]`);
-        if (cardsContainer && targetCard) {
+        if (cardsContainer && targetCard && window.innerWidth < 1024) {
             // Calculate the scroll position to center the card
             const containerWidth = cardsContainer.clientWidth;
             const cardWidth = targetCard.offsetWidth;
             const cardOffsetLeft = targetCard.offsetLeft;
-            const gap = 12; // 3 * 4px (gap-3 in Tailwind)
             
             // Center the card in the container
             const scrollLeft = cardOffsetLeft - (containerWidth / 2) + (cardWidth / 2);

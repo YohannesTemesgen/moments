@@ -8,14 +8,17 @@ use Illuminate\Support\Facades\Hash;
 
 class SuperAdminSeeder extends Seeder
 {
+    /**
+     * Run the database seeds.
+     */
     public function run(): void
     {
         SuperAdmin::firstOrCreate(
-            ['email' => 'superadmin@example.com'],
+            ['email' => 'superadmin@moments.app'],
             [
-                'name' => 'Super Admin',
+                'name' => 'Super Administrator',
                 'password' => Hash::make('password'),
-                'phone' => null,
+                'phone' => '+1 (555) 000-0000',
             ]
         );
     }

@@ -53,189 +53,166 @@
 
 <!-- Sticky Header -->
 <header class="shrink-0 z-20 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-xl border-b border-slate-200/50 dark:border-slate-800/50 transition-colors duration-300">
-    <div class="flex items-center justify-between px-4 py-3 max-w-lg mx-auto">
+    <div class="flex items-center justify-between px-4 lg:px-8 py-3 lg:py-5 max-w-[1600px] mx-auto">
         <div class="flex items-center gap-3">
-            <div class="relative group cursor-pointer">
+            <div class="lg:hidden relative group cursor-pointer">
                 <div class="aspect-square rounded-full size-10 ring-2 ring-primary/20 shadow-lg overflow-hidden img-loading-container">
                     <img src="https://ui-avatars.com/api/?name={{ urlencode(auth()->user()->name) }}&background=197fe6&color=fff" class="w-full h-full object-cover img-loading" onload="onImageLoad(this)">
                 </div>
                 <div class="absolute bottom-0 right-0 size-3 bg-green-500 rounded-full border-2 border-background-light dark:border-background-dark ring-2 ring-green-500/20"></div>
             </div>
             <div>
-                <h1 class="text-lg font-bold tracking-tight text-slate-900 dark:text-white">Timeline</h1>
-                <p class="text-xs text-slate-500 dark:text-slate-400">Your memories</p>
+                <h1 class="text-lg lg:text-2xl font-bold tracking-tight text-slate-900 dark:text-white">Timeline</h1>
+                <p class="text-xs lg:text-sm text-slate-500 dark:text-slate-400">Chronological view of your captured memories</p>
             </div>
         </div>
-        <button class="flex items-center justify-center size-10 rounded-xl bg-slate-100 dark:bg-surface-dark hover:bg-slate-200 dark:hover:bg-slate-700 transition-all text-slate-600 dark:text-slate-400">
-            <span class="material-symbols-outlined text-[22px]">search</span>
-        </button>
+        <div class="flex items-center gap-2 lg:gap-4">
+            <a href="{{ route('admin.moments.create') }}" class="hidden lg:flex items-center gap-2 px-5 py-2.5 bg-primary text-white rounded-xl font-bold text-sm shadow-lg shadow-primary/20 hover:scale-105 transition-all">
+                <span class="material-symbols-outlined text-[20px]">add</span>
+                New Moment
+            </a>
+            <button class="flex items-center justify-center size-10 lg:size-11 rounded-xl bg-slate-100 dark:bg-surface-dark hover:bg-slate-200 dark:hover:bg-slate-700 transition-all text-slate-600 dark:text-slate-400 border border-transparent lg:border-slate-200 dark:lg:border-slate-800">
+                <span class="material-symbols-outlined text-[22px] lg:text-[26px]">search</span>
+            </button>
+        </div>
     </div>
 </header>
 
 <!-- Main Content Area -->
-<main class="flex-1 overflow-y-auto no-scrollbar relative w-full pb-28">
-    @forelse($moments as $date => $dateMoments)
-    <div class="relative w-full max-w-lg mx-auto {{ !$loop->first ? 'mt-1' : '' }}">
-        <!-- Sticky Section Header -->
-        <div class="sticky top-0 z-10 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-xl px-4 py-3">
-            <div class="flex items-center gap-2">
-                <div class="size-2 rounded-full {{ \Carbon\Carbon::parse($date)->isToday() ? 'bg-primary animate-pulse' : 'bg-slate-400 dark:bg-slate-600' }}"></div>
-                <h3 class="text-sm font-semibold tracking-wide {{ \Carbon\Carbon::parse($date)->isToday() ? 'text-primary' : 'text-slate-600 dark:text-slate-400' }}">
-                    @if(\Carbon\Carbon::parse($date)->isToday())
-                        Today, {{ \Carbon\Carbon::parse($date)->format('M d') }}
-                    @elseif(\Carbon\Carbon::parse($date)->isYesterday())
-                        Yesterday, {{ \Carbon\Carbon::parse($date)->format('M d') }}
-                    @else
-                        {{ \Carbon\Carbon::parse($date)->format('l, M d') }}
-                    @endif
-                </h3>
-                <span class="ml-auto text-xs text-slate-400 dark:text-slate-500 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded-full">{{ count($dateMoments) }} {{ Str::plural('moment', count($dateMoments)) }}</span>
-            </div>
-        </div>
-        
-        <!-- Timeline Container -->
-        <div class="px-4 pb-4 space-y-4">
-            @foreach($dateMoments as $moment)
-            <a href="{{ route('admin.moments.show', $moment) }}" class="block group">
-                <div class="relative rounded-2xl overflow-hidden bg-white dark:bg-surface-dark shadow-sm hover:shadow-xl border border-slate-200/50 dark:border-slate-800/50 transition-all duration-300 hover:-translate-y-1">
-                    <!-- Card Image with Auto-scroll Carousel -->
-                    @if($moment->images->count() > 0)
-                    <div class="w-full aspect-[4/3] sm:aspect-video bg-slate-200 dark:bg-slate-800 relative overflow-hidden">
-                        @if($moment->images->count() > 1)
-                        <!-- Auto-scroll carousel for multiple images -->
-                        <div class="carousel-container" data-carousel data-speed="4000">
-                            <div class="carousel-track">
-                                @foreach($moment->images as $image)
-                                <div class="carousel-slide">
-                                    <img src="{{ $image->url }}" alt="{{ $moment->title }}" class="w-full h-full object-cover" 
-                                         onerror="handleImageError(this, '{{ $image->url }}', '{{ $image->image_path }}', {{ $image->id }})"
-                                         loading="lazy">
-                                </div>
-                                @endforeach
-                            </div>
-                            <!-- Carousel dots -->
-                            <div class="carousel-dots">
-                                @foreach($moment->images as $index => $image)
-                                <div class="carousel-dot {{ $loop->first ? 'active' : '' }}"></div>
-                                @endforeach
-                            </div>
-                        </div>
+<main class="flex-1 overflow-y-auto no-scrollbar relative w-full pb-28 lg:pb-12 bg-slate-50/50 dark:bg-background-dark/50">
+    <div class="max-w-[1600px] mx-auto lg:px-8 py-2 lg:py-8">
+        @forelse($moments as $date => $dateMoments)
+        <div class="relative w-full {{ !$loop->first ? 'mt-6 lg:mt-12' : '' }}">
+            <!-- Sticky Section Header -->
+            <div class="sticky top-0 z-10 bg-slate-50/90 dark:bg-background-dark/90 backdrop-blur-md px-4 lg:px-0 py-3 lg:py-4 mb-4">
+                <div class="flex items-center gap-3">
+                    <div class="size-2.5 lg:size-3 rounded-full {{ \Carbon\Carbon::parse($date)->isToday() ? 'bg-primary animate-pulse shadow-[0_0_10px_rgba(25,127,230,0.5)]' : 'bg-slate-400 dark:bg-slate-600' }}"></div>
+                    <h3 class="text-base lg:text-xl font-bold tracking-tight {{ \Carbon\Carbon::parse($date)->isToday() ? 'text-primary' : 'text-slate-800 dark:text-white' }}">
+                        @if(\Carbon\Carbon::parse($date)->isToday())
+                            Today <span class="text-slate-400 dark:text-slate-500 font-medium ml-1">· {{ \Carbon\Carbon::parse($date)->format('M d') }}</span>
+                        @elseif(\Carbon\Carbon::parse($date)->isYesterday())
+                            Yesterday <span class="text-slate-400 dark:text-slate-500 font-medium ml-1">· {{ \Carbon\Carbon::parse($date)->format('M d') }}</span>
                         @else
-                        <!-- Single image -->
-                        <img src="{{ $moment->images->first()->url }}" alt="{{ $moment->title }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-                             onerror="handleImageError(this, '{{ $moment->images->first()->url }}', '{{ $moment->images->first()->image_path }}', {{ $moment->images->first()->id }})"
-                             loading="lazy">
+                            {{ \Carbon\Carbon::parse($date)->format('l, M d, Y') }}
                         @endif
-                        
-                        <!-- Image count badge -->
-                        <div class="absolute top-3 left-3 flex items-center gap-1.5 bg-black/50 backdrop-blur-md text-white px-2.5 py-1 rounded-full text-xs font-medium">
-                            <span class="material-symbols-outlined text-[14px]">photo_library</span>
-                            <span>{{ $moment->images->count() }}</span>
-                        </div>
-                        
-                        <!-- Category badge -->
-                        @if($moment->category)
-                        @php
-                            $categoryClass = 'category-default';
-                            $categoryLower = strtolower($moment->category);
-                            if(str_contains($categoryLower, 'milestone')) $categoryClass = 'category-milestone';
-                            elseif(str_contains($categoryLower, 'celebration') || str_contains($categoryLower, 'birthday') || str_contains($categoryLower, 'party')) $categoryClass = 'category-celebration';
-                            elseif(str_contains($categoryLower, 'travel') || str_contains($categoryLower, 'trip') || str_contains($categoryLower, 'vacation')) $categoryClass = 'category-travel';
-                            elseif(str_contains($categoryLower, 'everyday') || str_contains($categoryLower, 'daily')) $categoryClass = 'category-everyday';
-                            elseif(str_contains($categoryLower, 'special')) $categoryClass = 'category-special';
-                        @endphp
-                        <div class="absolute top-3 right-3 {{ $categoryClass }} text-white px-2.5 py-1 rounded-full text-xs font-medium shadow-lg">
-                            {{ ucfirst($moment->category) }}
-                        </div>
-                        @endif
-                        
-                        <!-- Edit button -->
-                        <div class="absolute bottom-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-                            <button onclick="event.stopPropagation(); event.preventDefault(); window.location.href='{{ route('admin.moments.edit', $moment) }}';" class="size-9 flex items-center justify-center rounded-full bg-white/90 dark:bg-slate-900/90 backdrop-blur-md text-slate-700 dark:text-white hover:bg-white dark:hover:bg-slate-800 transition-colors shadow-lg">
-                                <span class="material-symbols-outlined text-[18px]">edit</span>
-                            </button>
-                        </div>
-                        
-                        <!-- Gradient overlay for text readability -->
-                        <div class="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
+                    </h3>
+                    <div class="ml-auto flex items-center gap-2">
+                        <span class="text-[10px] lg:text-xs font-bold text-slate-400 dark:text-slate-500 bg-white dark:bg-surface-dark px-3 py-1 rounded-full border border-slate-100 dark:border-slate-800 shadow-sm">{{ count($dateMoments) }} {{ Str::plural('moment', count($dateMoments)) }}</span>
                     </div>
-                    @else
-                    <!-- No images placeholder -->
-                    <div class="w-full aspect-[4/3] sm:aspect-video bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 flex items-center justify-center">
-                        <div class="text-center">
-                            <span class="material-symbols-outlined text-4xl text-slate-400 dark:text-slate-600">image</span>
-                            <p class="text-xs text-slate-400 dark:text-slate-600 mt-1">No images</p>
-                        </div>
-                        @if($moment->category)
-                        @php
-                            $categoryClass = 'category-default';
-                            $categoryLower = strtolower($moment->category);
-                            if(str_contains($categoryLower, 'milestone')) $categoryClass = 'category-milestone';
-                            elseif(str_contains($categoryLower, 'celebration') || str_contains($categoryLower, 'birthday') || str_contains($categoryLower, 'party')) $categoryClass = 'category-celebration';
-                            elseif(str_contains($categoryLower, 'travel') || str_contains($categoryLower, 'trip') || str_contains($categoryLower, 'vacation')) $categoryClass = 'category-travel';
-                            elseif(str_contains($categoryLower, 'everyday') || str_contains($categoryLower, 'daily')) $categoryClass = 'category-everyday';
-                            elseif(str_contains($categoryLower, 'special')) $categoryClass = 'category-special';
-                        @endphp
-                        <div class="absolute top-3 right-3 {{ $categoryClass }} text-white px-2.5 py-1 rounded-full text-xs font-medium shadow-lg">
-                            {{ ucfirst($moment->category) }}
-                        </div>
-                        @endif
-                    </div>
-                    @endif
-                    
-                    <!-- Card Content -->
-                    <div class="p-4">
-                        <!-- Title and Status -->
-                        <div class="flex items-start justify-between gap-3 mb-3">
-                            <h4 class="text-base font-bold text-slate-900 dark:text-white leading-snug line-clamp-2 flex-1">{{ $moment->title }}</h4>
-                            @if($moment->status == 'in_progress')
-                            <span class="shrink-0 inline-flex items-center gap-1 px-2 py-1 rounded-full bg-blue-500/10 text-primary text-xs font-medium">
-                                <span class="size-1.5 rounded-full bg-primary animate-pulse"></span>
-                                In Progress
-                            </span>
+                </div>
+            </div>
+            
+            <!-- Moments Grid -->
+            <div class="px-4 lg:px-0 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-4 lg:gap-6">
+                @foreach($dateMoments as $moment)
+                <a href="{{ route('admin.moments.show', $moment) }}" class="block group">
+                    <div class="relative h-full flex flex-col rounded-2xl overflow-hidden bg-white dark:bg-surface-dark shadow-sm hover:shadow-2xl border border-slate-200/50 dark:border-slate-800/50 transition-all duration-500 hover:-translate-y-2">
+                        <!-- Card Image -->
+                        @if($moment->images->count() > 0)
+                        <div class="w-full aspect-[4/3] bg-slate-200 dark:bg-slate-800 relative overflow-hidden">
+                            @if($moment->images->count() > 1)
+                            <div class="carousel-container h-full" data-carousel data-speed="4000">
+                                <div class="carousel-track h-full">
+                                    @foreach($moment->images as $image)
+                                    <div class="carousel-slide h-full">
+                                        <img src="{{ $image->url }}" alt="{{ $moment->title }}" class="w-full h-full object-cover" loading="lazy">
+                                    </div>
+                                    @endforeach
+                                </div>
+                                <div class="carousel-dots">
+                                    @foreach($moment->images as $index => $image)
+                                    <div class="carousel-dot {{ $loop->first ? 'active' : '' }}"></div>
+                                    @endforeach
+                                </div>
+                            </div>
+                            @else
+                            <img src="{{ $moment->images->first()->url }}" alt="{{ $moment->title }}" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy">
                             @endif
-                        </div>
-                        
-                        <!-- Description -->
-                        @if($moment->description)
-                        <p class="text-sm text-slate-600 dark:text-slate-400 line-clamp-2 mb-3">{{ $moment->description }}</p>
-                        @endif
-                        
-                        <!-- Meta info: Location, Category, Time -->
-                        <div class="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-slate-500 dark:text-slate-400">
-                            @if($moment->location)
-                            <div class="flex items-center gap-1.5">
-                                <span class="material-symbols-outlined text-[16px] text-primary">location_on</span>
-                                <span class="truncate max-w-[140px]">{{ $moment->location }}</span>
+                            
+                            <div class="absolute top-3 left-3 flex items-center gap-1.5 bg-black/40 backdrop-blur-md text-white px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider">
+                                <span class="material-symbols-outlined text-[14px]">photo_library</span>
+                                <span>{{ $moment->images->count() }}</span>
+                            </div>
+                            
+                            @if($moment->category)
+                            @php
+                                $categoryClass = 'category-default';
+                                $categoryLower = strtolower($moment->category);
+                                if(str_contains($categoryLower, 'milestone')) $categoryClass = 'category-milestone';
+                                elseif(str_contains($categoryLower, 'celebration')) $categoryClass = 'category-celebration';
+                                elseif(str_contains($categoryLower, 'travel')) $categoryClass = 'category-travel';
+                                elseif(str_contains($categoryLower, 'everyday')) $categoryClass = 'category-everyday';
+                                elseif(str_contains($categoryLower, 'special')) $categoryClass = 'category-special';
+                            @endphp
+                            <div class="absolute top-3 right-3 {{ $categoryClass }} text-white px-2.5 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider shadow-lg">
+                                {{ $moment->category }}
                             </div>
                             @endif
                             
-                            @if($moment->moment_time)
-                            <div class="flex items-center gap-1.5">
-                                <span class="material-symbols-outlined text-[16px] text-slate-400">schedule</span>
-                                <span>{{ \Carbon\Carbon::parse($moment->moment_time)->format('h:i A') }}</span>
+                            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500"></div>
+                        </div>
+                        @else
+                        <div class="w-full aspect-[4/3] bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-800 dark:to-slate-900 flex flex-col items-center justify-center gap-2">
+                            <span class="material-symbols-outlined text-4xl text-slate-300 dark:text-slate-700">image</span>
+                            <span class="text-[10px] font-bold text-slate-400 dark:text-slate-600 uppercase tracking-widest">No images</span>
+                        </div>
+                        @endif
+                        
+                        <!-- Card Content -->
+                        <div class="p-5 flex-1 flex flex-col">
+                            <div class="flex items-start justify-between gap-3 mb-3">
+                                <h4 class="text-base lg:text-lg font-bold text-slate-900 dark:text-white leading-tight line-clamp-2 group-hover:text-primary transition-colors">{{ $moment->title }}</h4>
+                                @if($moment->status == 'in_progress')
+                                <span class="shrink-0 px-2 py-0.5 rounded-md bg-blue-500/10 text-primary text-[10px] font-bold uppercase tracking-widest">Active</span>
+                                @endif
                             </div>
+                            
+                            @if($moment->description)
+                            <p class="text-sm text-slate-500 dark:text-slate-400 line-clamp-2 mb-4 leading-relaxed flex-1">{{ $moment->description }}</p>
                             @endif
+                            
+                            <div class="flex flex-wrap items-center gap-x-4 gap-y-2 pt-4 border-t border-slate-50 dark:border-slate-800/50">
+                                @if($moment->location)
+                                <div class="flex items-center gap-1.5 text-xs text-slate-400 dark:text-slate-500">
+                                    <span class="material-symbols-outlined text-[16px] text-primary">location_on</span>
+                                    <span class="truncate max-w-[120px]">{{ $moment->location }}</span>
+                                </div>
+                                @endif
+                                
+                                @if($moment->moment_time)
+                                <div class="flex items-center gap-1.5 text-xs text-slate-400 dark:text-slate-500 ml-auto">
+                                    <span class="material-symbols-outlined text-[16px]">schedule</span>
+                                    <span>{{ \Carbon\Carbon::parse($moment->moment_time)->format('h:i A') }}</span>
+                                </div>
+                                @endif
+                            </div>
+                        </div>
+
+                        <!-- Edit Hover Action -->
+                        <div class="absolute top-3 right-3 lg:top-4 lg:right-4 opacity-0 lg:group-hover:opacity-100 transition-all duration-300 transform translate-y-2 lg:group-hover:translate-y-0 z-20">
+                            <button onclick="event.preventDefault(); window.location.href='{{ route('admin.moments.edit', $moment) }}';" class="size-10 flex items-center justify-center rounded-xl bg-white dark:bg-slate-900 text-slate-700 dark:text-white hover:text-primary transition-colors shadow-2xl border border-slate-100 dark:border-slate-800">
+                                <span class="material-symbols-outlined text-[20px]">edit</span>
+                            </button>
                         </div>
                     </div>
-                </div>
+                </a>
+                @endforeach
+            </div>
+        </div>
+        @empty
+        <div class="flex flex-col items-center justify-center min-h-[60vh] py-20 px-6 text-center">
+            <div class="w-24 h-24 bg-white dark:bg-surface-dark rounded-[2.5rem] flex items-center justify-center mb-8 shadow-xl border border-slate-100 dark:border-slate-800">
+                <span class="material-symbols-outlined text-5xl text-primary">timeline</span>
+            </div>
+            <h3 class="text-2xl lg:text-3xl font-bold text-slate-900 dark:text-white mb-2">Your timeline is empty</h3>
+            <p class="text-sm lg:text-base text-slate-500 dark:text-slate-400 max-w-sm mb-10 leading-relaxed">Every great journey starts with a single moment. Start capturing yours today.</p>
+            <a href="{{ route('admin.moments.create') }}" class="inline-flex items-center gap-3 px-8 py-4 rounded-2xl bg-primary text-white font-bold shadow-xl shadow-primary/30 hover:shadow-primary/40 hover:scale-105 transition-all">
+                <span class="material-symbols-outlined">add_circle</span>
+                Capture Your First Moment
             </a>
-            @endforeach
         </div>
+        @endforelse
     </div>
-    @empty
-    <div class="flex flex-col items-center justify-center min-h-[60vh] py-20 px-6">
-        <div class="w-24 h-24 bg-gradient-to-br from-primary/20 to-primary/5 rounded-3xl flex items-center justify-center mb-6 shadow-lg">
-            <span class="material-symbols-outlined text-5xl text-primary">timeline</span>
-        </div>
-        <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-2">No moments yet</h3>
-        <p class="text-sm text-slate-500 dark:text-slate-400 text-center max-w-xs mb-6">Start capturing your precious memories by adding your first moment.</p>
-        <a href="{{ route('admin.moments.create') }}" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-primary text-white font-medium shadow-lg shadow-primary/30 hover:shadow-primary/40 hover:scale-105 transition-all">
-            <span class="material-symbols-outlined text-[20px]">add</span>
-            Add First Moment
-        </a>
-    </div>
-    @endforelse
 </main>
 
 

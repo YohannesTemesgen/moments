@@ -5,13 +5,13 @@
 @section('content')
 <div class="flex-1 flex flex-col overflow-hidden">
     <!-- Header -->
-    <header class="bg-white dark:bg-surface-dark border-b border-slate-200 dark:border-slate-800 px-6 py-4">
+    <header class="bg-white dark:bg-surface-dark border-b border-slate-200 dark:border-slate-800 px-6 lg:px-8 py-4 lg:py-6">
         <div class="flex items-center justify-between">
             <div>
-                <h1 class="text-2xl font-bold text-slate-900 dark:text-white">Navigation Management</h1>
+                <h1 class="text-2xl lg:text-3xl font-bold text-slate-900 dark:text-white">Navigation Management</h1>
                 <p class="text-sm text-slate-600 dark:text-slate-400 mt-1">Control the order and visibility of bottom navigation items</p>
             </div>
-            <button onclick="openAddModal()" class="inline-flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-blue-600 transition-colors">
+            <button onclick="openAddModal()" class="inline-flex items-center gap-2 px-4 py-2 lg:px-6 lg:py-3 bg-primary text-white rounded-lg lg:rounded-xl hover:bg-blue-600 transition-all shadow-lg shadow-primary/20 font-bold">
                 <span class="material-symbols-outlined text-lg">add</span>
                 Add Item
             </button>
@@ -19,72 +19,102 @@
     </header>
 
     <!-- Main Content -->
-    <main class="flex-1 overflow-y-auto p-6">
-        <div class="max-w-4xl mx-auto">
-            <!-- Navigation Preview -->
-            <div class="bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-slate-800 p-6 mb-6">
-                <h2 class="text-lg font-semibold text-slate-900 dark:text-white mb-4">Preview</h2>
-                <div class="bg-slate-100 dark:bg-slate-800 rounded-lg p-4">
-                    <div id="nav-preview" class="flex items-center justify-around max-w-md mx-auto">
-                        <!-- Preview items will be populated by JavaScript -->
+    <main class="flex-1 overflow-hidden p-6 lg:p-8">
+        <div class="h-full flex flex-col lg:flex-row gap-8 max-w-[1600px] mx-auto">
+            
+            <!-- Navigation Items List (Left Side on Desktop) -->
+            <div class="flex-1 flex flex-col min-w-0">
+                <div class="bg-white dark:bg-surface-dark rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col h-full overflow-hidden">
+                    <div class="p-6 border-b border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                        <h2 class="text-lg font-bold text-slate-900 dark:text-white">Navigation Items</h2>
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-widest">Drag to reorder</span>
+                    </div>
+                    <div id="nav-items-container" class="flex-1 overflow-y-auto p-4 lg:p-6 space-y-3 no-scrollbar">
+                        @foreach($navItems as $item)
+                        <div class="nav-item flex items-center gap-4 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-200 dark:border-slate-700/50 hover:border-primary/50 transition-all group" data-id="{{ $item->id }}">
+                            <!-- Drag Handle -->
+                            <div class="drag-handle cursor-move text-slate-400 hover:text-primary transition-colors">
+                                <span class="material-symbols-outlined">drag_indicator</span>
+                            </div>
+
+                            <!-- Icon -->
+                            <div class="flex-shrink-0 size-12 rounded-xl bg-white dark:bg-slate-900 flex items-center justify-center text-primary shadow-sm">
+                                <span class="material-symbols-outlined text-2xl">{{ $item->icon }}</span>
+                            </div>
+
+                            <!-- Item Info -->
+                            <div class="flex-1 min-w-0">
+                                <div class="flex items-center gap-2 mb-0.5">
+                                    <h3 class="font-bold text-slate-900 dark:text-white truncate">{{ $item->label }}</h3>
+                                    <span class="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider rounded-md 
+                                        {{ $item->type === 'link' ? 'bg-blue-100 text-blue-700 dark:bg-blue-900/30 dark:text-blue-400' : 
+                                           ($item->type === 'button' ? 'bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400' : 
+                                            'bg-gray-100 text-gray-700 dark:bg-gray-900/30 dark:text-gray-400') }}">
+                                        {{ $item->type }}
+                                    </span>
+                                </div>
+                                <p class="text-xs text-slate-500 dark:text-slate-400 truncate">
+                                    {{ $item->route ? "Route: {$item->route}" : ($item->attributes ? json_encode($item->attributes) : 'No route') }}
+                                </p>
+                            </div>
+
+                            <!-- Visibility Toggle -->
+                            <div class="flex items-center gap-3 pr-4 border-r border-slate-200 dark:border-slate-700">
+                                <span class="hidden sm:block text-[10px] font-bold text-slate-400 uppercase tracking-widest">Visible</span>
+                                <label class="relative inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" class="sr-only peer visibility-toggle" 
+                                           data-id="{{ $item->id }}" 
+                                           {{ $item->is_visible ? 'checked' : '' }}>
+                                    <div class="w-10 h-5 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all dark:border-slate-600 peer-checked:bg-primary"></div>
+                                </label>
+                            </div>
+
+                            <!-- Actions -->
+                            <div class="flex items-center gap-1">
+                                <button onclick="editItem({{ $item->id }})" class="p-2 rounded-lg text-slate-400 hover:text-primary hover:bg-primary/10 transition-all">
+                                    <span class="material-symbols-outlined text-[20px]">edit</span>
+                                </button>
+                                <button onclick="deleteItem({{ $item->id }})" class="p-2 rounded-lg text-slate-400 hover:text-red-500 hover:bg-red-500/10 transition-all">
+                                    <span class="material-symbols-outlined text-[20px]">delete</span>
+                                </button>
+                            </div>
+                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
 
-            <!-- Navigation Items List -->
-            <div class="bg-white dark:bg-surface-dark rounded-xl border border-slate-200 dark:border-slate-800 p-6">
-                <h2 class="text-lg font-semibold text-slate-900 dark:text-white mb-4">Navigation Items</h2>
-                <div id="nav-items-container" class="space-y-3">
-                    @foreach($navItems as $item)
-                    <div class="nav-item flex items-center gap-4 p-4 bg-slate-50 dark:bg-slate-800 rounded-lg border border-slate-200 dark:border-slate-700" data-id="{{ $item->id }}">
-                        <!-- Drag Handle -->
-                        <div class="drag-handle cursor-move text-slate-400 hover:text-slate-600 dark:hover:text-slate-300">
-                            <span class="material-symbols-outlined">drag_indicator</span>
-                        </div>
-
-                        <!-- Icon -->
-                        <div class="flex-shrink-0">
-                            <span class="material-symbols-outlined text-2xl text-slate-600 dark:text-slate-400">{{ $item->icon }}</span>
-                        </div>
-
-                        <!-- Item Info -->
-                        <div class="flex-1 min-w-0">
-                            <div class="flex items-center gap-2">
-                                <h3 class="font-medium text-slate-900 dark:text-white">{{ $item->label }}</h3>
-                                <span class="px-2 py-1 text-xs font-medium rounded-full 
-                                    {{ $item->type === 'link' ? 'bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200' : 
-                                       ($item->type === 'button' ? 'bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200' : 
-                                        'bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-200') }}">
-                                    {{ ucfirst($item->type) }}
-                                </span>
+            <!-- Navigation Preview (Right Side on Desktop) -->
+            <div class="lg:w-[400px] shrink-0">
+                <div class="bg-white dark:bg-surface-dark rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm p-8 sticky top-0">
+                    <div class="mb-8">
+                        <h2 class="text-xl font-bold text-slate-900 dark:text-white mb-1">Live Preview</h2>
+                        <p class="text-sm text-slate-500">How it looks on mobile devices</p>
+                    </div>
+                    
+                    <!-- Mobile Mockup -->
+                    <div class="relative mx-auto w-64 h-[450px] bg-slate-900 rounded-[3rem] border-8 border-slate-800 shadow-2xl overflow-hidden">
+                        <div class="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-6 bg-slate-800 rounded-b-2xl z-20"></div>
+                        <div class="h-full bg-slate-100 dark:bg-slate-900 flex flex-col">
+                            <div class="flex-1"></div>
+                            <!-- Preview Bottom Nav -->
+                            <div id="nav-preview" class="bg-white dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700 h-16 flex items-center justify-around px-2">
+                                <!-- Preview items populated by JS -->
                             </div>
-                            <p class="text-sm text-slate-600 dark:text-slate-400">
-                                {{ $item->route ? "Route: {$item->route}" : ($item->attributes ? json_encode($item->attributes) : 'No route') }}
-                            </p>
-                        </div>
-
-                        <!-- Visibility Toggle -->
-                        <div class="flex items-center gap-2">
-                            <span class="text-sm text-slate-600 dark:text-slate-400">Visible</span>
-                            <label class="relative inline-flex items-center cursor-pointer">
-                                <input type="checkbox" class="sr-only peer visibility-toggle" 
-                                       data-id="{{ $item->id }}" 
-                                       {{ $item->is_visible ? 'checked' : '' }}>
-                                <div class="w-11 h-6 bg-slate-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-slate-600 peer-checked:bg-blue-600"></div>
-                            </label>
-                        </div>
-
-                        <!-- Actions -->
-                        <div class="flex items-center gap-2">
-                            <button onclick="editItem({{ $item->id }})" class="p-2 text-slate-400 hover:text-blue-600 transition-colors">
-                                <span class="material-symbols-outlined">edit</span>
-                            </button>
-                            <button onclick="deleteItem({{ $item->id }})" class="p-2 text-slate-400 hover:text-red-600 transition-colors">
-                                <span class="material-symbols-outlined">delete</span>
-                            </button>
                         </div>
                     </div>
-                    @endforeach
+
+                    <div class="mt-8 space-y-4">
+                        <div class="p-4 bg-primary/5 rounded-xl border border-primary/10">
+                            <h4 class="text-sm font-bold text-primary mb-1 flex items-center gap-2">
+                                <span class="material-symbols-outlined text-[18px]">info</span>
+                                Pro Tip
+                            </h4>
+                            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+                                Use high-contrast icons for better visibility. Most users prefer 4-5 items in the bottom navigation.
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -170,17 +200,17 @@ const sortable = Sortable.create(document.getElementById('nav-items-container'),
 });
 
 // Update preview
-function updatePreview() {
-    const preview = document.getElementById('nav-preview');
-    const visibleItems = navItems.filter(item => item.is_visible).sort((a, b) => a.order - b.order);
-    
-    preview.innerHTML = visibleItems.map(item => `
-        <div class="flex flex-col items-center justify-center p-2 rounded-xl transition-all duration-200 text-gray-600 dark:text-gray-400">
-            <span class="material-symbols-outlined text-lg mb-0.5">${item.icon}</span>
-            <span class="text-xs font-medium">${item.label}</span>
-        </div>
-    `).join('');
-}
+    function updatePreview() {
+        const preview = document.getElementById('nav-preview');
+        const visibleItems = navItems.filter(item => item.is_visible).sort((a, b) => a.order - b.order);
+        
+        preview.innerHTML = visibleItems.map(item => `
+            <div class="flex flex-col items-center justify-center p-1 text-slate-500 dark:text-slate-400">
+                <span class="material-symbols-outlined text-[20px] mb-0.5">${item.icon}</span>
+                <span class="text-[8px] font-bold uppercase tracking-tighter scale-90">${item.label}</span>
+            </div>
+        `).join('');
+    }
 
 // Update order
 function updateOrder() {
