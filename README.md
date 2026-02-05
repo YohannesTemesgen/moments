@@ -11,21 +11,32 @@ A professional multi-tenant Laravel PWA application featuring a Stranger Things-
 **Moments** is designed to be a personal digital scrapbook. It combines a visually stunning landing page with a powerful backend for managing "Moments"—memories consisting of titles, descriptions, dates, and locations. Built with a mobile-first philosophy, the application is fully Progressive Web App (PWA) compliant, allowing users to install it on their devices for an app-like experience.
 
 ### Key Architectural Highlight: Multi-Tenancy
-The application supports **Multi-Tenancy** using a single shared database architecture. This allows multiple independent organizations or individuals to use the same platform with complete data isolation, served via dedicated subdomains or custom domains.
+The application supports **Multi-Tenancy** using a single shared database architecture (or database-per-tenant depending on configuration). This allows multiple independent organizations or individuals to use the same platform with data isolation.
 
 ---
 
 ## ✨ Features
+### 📸 Moments Management
+- **Rich Media Support**: Drag-and-drop multi-image upload system for capturing memories in high detail.
+- **Categorization**: Organize moments with custom categories for easy filtering.
+- **Geotagging**: Attach precise locations to every moment.
 
-- **Stranger Things Landing Page**: Immersive countdown timer with video backgrounds and thematic styling.
-- **Multi-Tenant Architecture**: Dynamic tenant creation with isolated data, settings, and users.
-- **Mobile-First Admin Dashboard**:
-  - **Timeline View**: Chronological display of moments grouped by date.
-  - **Interactive Calendar**: Monthly view with event indicators.
-  - **Geospatial Map**: Leaflet-powered map visualizing moments by location.
-  - **Dynamic Navigation**: Fully customizable navigation menu managed via the admin panel.
-- **PWA Ready**: Offline support, manifest configuration, and install prompts for iOS and Android.
-- **SuperAdmin Portal**: Centralized management for tenants, global settings, and user provisioning.
+### 📊 Visualization & Organization
+- **Timeline View**: A chronological feed of your life's events.
+- **Interactive Calendar**: Monthly overview to visualize moments by date.
+- **Geospatial Map**: Explore your journey on an interactive **Leaflet.js** map.
+- **Dynamic Navigation**: Fully customizable sidebar navigation managed directly from the admin panel.
+
+### 🔐 Security & Administration
+- **Multi-Tenant Architecture**: Complete data isolation per tenant (users, settings, and content).
+- **SuperAdmin Portal**: centralized dashboard for managing tenants, users, and global system settings.
+- **Audit Logging**: Comprehensive activity tracking for security and accountability.
+- **Role-Based Access**: Distinct separation between SuperAdmin and Tenant Admin roles.
+
+### 📱 Progressive Web App (PWA)
+- **Installable**: Add to Home Screen on iOS and Android.
+- **Offline Capable**: Service Worker integration ensures access even without an internet connection.
+- **Native Feel**: App-like experience with a custom manifest and splash screens.
 
 ---
 
@@ -33,10 +44,13 @@ The application supports **Multi-Tenancy** using a single shared database archit
 
 - **Framework**: [Laravel 12.x](https://laravel.com)
 - **Tenancy**: [Stancl Tenancy](https://tenancyforlaravel.com/)
-- **Frontend**: Tailwind CSS, Blade Templates
+- **Frontend**: 
+  - [Tailwind CSS v4](https://tailwindcss.com/)
+  - [Blade Templates](https://laravel.com/docs/blade)
+  - [Vite](https://vitejs.dev/) (Build tool)
 - **Maps**: [Leaflet.js](https://leafletjs.com/)
 - **Database**: SQLite (Development) / MySQL (Production)
-- **PWA**: Workbox / Service Workers
+- **PWA**: Custom Service Worker & Dynamic Manifest
 
 ---
 
@@ -77,14 +91,19 @@ The application supports **Multi-Tenancy** using a single shared database archit
    *Note: This will create the central database schema and initial tenants.*
 
 5. **Storage Link**
-   Create a symbolic link for storage:
+   Create a symbolic link for storage to ensure images are accessible:
    ```bash
    php artisan storage:link
    ```
 
 6. **Compile Assets**
+   Using Vite for asset compilation:
    ```bash
    npm run build
+   ```
+   *For development with hot reload:*
+   ```bash
+   npm run dev
    ```
 
 7. **Start the Development Server**
@@ -98,16 +117,27 @@ The application supports **Multi-Tenancy** using a single shared database archit
 
 ### Accessing the Application
 - **Central Landing Page**: `http://localhost:8000`
+- **Genna Countdown**: `http://localhost:8000/genacountdown`
 - **SuperAdmin Panel**: `http://localhost:8000/admin/login`
 - **Tenant Admin Dashboard**: `http://<tenant-id>.localhost:8000/admin/timeline`
 
 ### Managing Tenants
-Tenants are identified by their subdomain. For local development, use subdomains like `tenant1.localhost`. 
-Detailed multi-tenancy documentation can be found in [TENANCY.md](file:///c:/xampp/htdocs/moments/TENANCY.md).
+Tenants are identified by their subdomain. For local development, ensure your hosts file or DNS setup supports subdomains like `tenant1.localhost`.
 
-### Default Credentials
-- **SuperAdmin**: Managed via `super_admins` table (Seed defaults provided).
-- **Tenant User**: `user1@tenant1.com` / `password` (if seeded).
+### Default Credentials (Seeders)
+
+**SuperAdmin** (Central Management):
+- Email: `superadmin@moments.app`
+- Password: `password`
+
+**Standard Admin**:
+- Email: `admin@example.com`
+- Password: `password`
+
+**Tenant Users**:
+- Email: `user1@tenant1.com`
+- Email: `user2@tenant2.com`
+- Password: `password`
 
 ---
 
@@ -121,19 +151,20 @@ A high-level overview of the codebase:
 │   │   ├── Admin/           # Tenant-specific admin logic
 │   │   ├── SuperAdmin/      # Central management logic
 │   │   └── Auth/            # Authentication handlers
-│   ├── Models/              # Tenant-aware Eloquent models
-│   └── Providers/           # Tenancy and App service providers
-├── config/                  # Configuration files (tenancy.php, etc.)
+│   ├── Models/              # Eloquent models
+│   └── Providers/           # App service providers
+├── config/                  # Configuration files
 ├── database/
-│   ├── migrations/          # Shared database schema
-│   └── seeders/             # Initial data and tenant provisioning
+│   ├── migrations/          # Database schema
+│   └── seeders/             # Initial data (SuperAdmin, Tenants)
 ├── resources/views/
 │   ├── admin/               # Tenant dashboard views
 │   ├── superadmin/          # Central dashboard views
-│   └── errors/              # Custom error pages (e.g., 404-tenant)
+│   ├── layouts/             # Shared blade layouts
+│   └── errors/              # Custom error pages
 └── routes/
-    ├── web.php              # Central/SuperAdmin routes
-    └── tenant.php           # Tenant-specific routes
+    ├── web.php              # Main application routes (Central & Tenant)
+    └── tenant.php           # Dedicated tenancy routes (if separated)
 ```
 
 ---
@@ -142,10 +173,11 @@ A high-level overview of the codebase:
 
 | Issue | Solution |
 | :--- | :--- |
-| **Tenant Not Found (404)** | Ensure the subdomain matches a record in the `domains` table. |
+| **Tenant Not Found (404)** | Ensure the subdomain matches a record in the `domains` table and your hosts file is configured. |
 | **Database Connection Error** | Verify `DB_CONNECTION` and credentials in your `.env` file. |
 | **PWA Not Installing** | Ensure you are accessing the site over HTTPS or `localhost`. |
 | **Images Not Showing** | Run `php artisan storage:link` and check file permissions. |
+| **Vite Manifest Not Found** | Run `npm run build` to generate the build assets. |
 
 ---
 

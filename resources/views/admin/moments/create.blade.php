@@ -41,11 +41,11 @@
     </header>
 
     <main class="flex-1 overflow-hidden relative">
-        <form id="moment-form" method="POST" action="{{ route('admin.moments.store') }}" enctype="multipart/form-data" class="h-full flex flex-col lg:flex-row overflow-hidden">
+        <form id="moment-form" method="POST" action="{{ route('admin.moments.store') }}" enctype="multipart/form-data" class="h-full flex flex-col lg:flex-row overflow-y-auto lg:overflow-hidden">
             @csrf
             
             <!-- Left Column: Media Upload (Desktop) -->
-            <div class="w-full lg:w-[45%] xl:w-[40%] h-auto lg:h-full overflow-y-auto no-scrollbar p-5 lg:p-8 lg:border-r lg:border-slate-200 lg:dark:border-slate-800">
+            <div class="w-full lg:w-[45%] xl:w-[40%] h-auto lg:h-full lg:overflow-y-auto no-scrollbar p-5 lg:p-8 lg:border-r lg:border-slate-200 lg:dark:border-slate-800">
                 <div class="space-y-6">
                     <div>
                         <h3 class="text-sm font-bold text-slate-900 dark:text-white uppercase tracking-wider mb-4">Moment Photos</h3>
@@ -86,7 +86,7 @@
             </div>
 
             <!-- Right Column: Form Fields -->
-            <div class="flex-1 h-full overflow-y-auto no-scrollbar p-5 lg:p-8 bg-white dark:bg-surface-dark lg:bg-transparent lg:dark:bg-transparent">
+            <div class="flex-1 h-auto lg:h-full lg:overflow-y-auto no-scrollbar p-5 lg:p-8 bg-white dark:bg-surface-dark lg:bg-transparent lg:dark:bg-transparent">
                 <div class="max-w-2xl mx-auto space-y-8">
                     @if($errors->any())
                     <div class="bg-red-500/10 border border-red-500/20 text-red-500 p-4 rounded-xl text-sm font-medium flex items-center gap-3">
