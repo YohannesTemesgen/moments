@@ -28,9 +28,9 @@
     </div>
 </header>
 
-<main class="flex-1 overflow-hidden relative w-full flex flex-col lg:flex-row">
+<main class="flex-1 relative w-full flex flex-col lg:flex-row overflow-y-auto lg:overflow-hidden">
     <!-- Calendar Widget Container -->
-    <div class="flex-1 overflow-y-auto no-scrollbar lg:border-r border-slate-200 dark:border-slate-800">
+    <div class="w-full lg:flex-1 lg:overflow-y-auto no-scrollbar lg:border-r border-slate-200 dark:border-slate-800">
         <div class="bg-white dark:bg-surface-dark pb-4 lg:pb-8 shadow-sm lg:min-h-full">
             <div class="px-4 lg:px-8 pt-4 lg:pt-8 pb-2 flex items-center justify-between mb-4">
                 <h2 class="text-xl lg:text-3xl font-bold text-slate-900 dark:text-white flex items-center gap-1">
@@ -116,7 +116,7 @@
     </div>
     
     <!-- Selected Day Moments Container -->
-    <div class="lg:w-96 lg:shrink-0 overflow-y-auto no-scrollbar bg-slate-50 dark:bg-background-dark/50">
+    <div class="w-full lg:w-96 lg:shrink-0 lg:overflow-y-auto no-scrollbar bg-slate-50 dark:bg-background-dark/50">
         <div class="relative w-full max-w-md mx-auto mt-4 lg:mt-0 px-4 lg:px-6 py-6 lg:py-8">
             <div class="flex items-center justify-between mb-6">
                 <div>
