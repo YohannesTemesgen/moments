@@ -6,6 +6,8 @@
 
 A professional multi-tenant Laravel PWA application featuring a Stranger Things-themed countdown landing page and a comprehensive mobile-first admin dashboard for capturing and managing life's most precious moments.
 
+![Moments Screenshot](public/screenshot.jpg)
+
 ## 🌟 Project Overview
 
 **Moments** is designed to be a personal digital scrapbook. It combines a visually stunning landing page with a powerful backend for managing "Moments"—memories consisting of titles, descriptions, dates, and locations. Built with a mobile-first philosophy, the application is fully Progressive Web App (PWA) compliant, allowing users to install it on their devices for an app-like experience.
